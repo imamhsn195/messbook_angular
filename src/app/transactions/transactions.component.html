@@ -18,7 +18,7 @@
                 <input matInput type="number" step="0.01" id="amount" [(ngModel)]="newTransaction.amount" name="amount">
             </mat-form-field>
             
-                <button type="button" color="primary" style="width: 100%; margin-bottom: 0.5em;" mat-flat-button (click)="fileInput.click()">Attachment (optional):</button>
+                <button type="button" color="primary" style="width: 100%; margin-bottom: 0.5em;" mat-flat-button (click)="fileInput.click()">Attachment (Optional):</button>
                 <input hidden  #fileInput type="file"  id="attachment" [(ngModel)]="newTransaction.attachment" name="attachment">
 
                 <button mat-flat-button color="accent" style="width: 100%;" type="submit">{{ isNewTransaction ? "Add" : 'Update' }} Transaction</button>

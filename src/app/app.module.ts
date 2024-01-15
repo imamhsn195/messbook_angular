@@ -22,10 +22,14 @@ import { HeaderComponent } from './header/header.component';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { UsersComponent } from './users/users.component';
+import { MessBookComponent } from './mess-book/mess-book.component';
+import { MatSelectModule } from '@angular/material/select';
+
 const routes : Routes = [
   { path: '', redirectTo: '', pathMatch: 'full'},
   { path: 'api/transactions', component: TransactionsComponent },
-  { path: 'api/users', component: UsersComponent}
+  { path: 'api/users', component: UsersComponent },
+  { path: 'api/mess-books', component: MessBookComponent }
 ]
 
 @NgModule({
@@ -33,7 +37,8 @@ const routes : Routes = [
     AppComponent,
     TransactionsComponent,
     HeaderComponent,
-    UsersComponent
+    UsersComponent,
+    MessBookComponent
   ],
   imports: [
     MatTableModule,
@@ -51,6 +56,7 @@ const routes : Routes = [
     MatFormFieldModule,
     MatIconModule,
     MatDividerModule,
+    MatSelectModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { delay: 500}),
     RouterModule.forRoot(routes),
     BrowserAnimationsModule,
