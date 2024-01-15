@@ -18,18 +18,27 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { HeaderComponent } from './header/header.component';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { UsersComponent } from './users/users.component';
 const routes : Routes = [
-  { path: '', redirectTo: 'api/transactions', pathMatch: 'full'},
-  { path: 'api/transactions', component: TransactionsComponent }
+  { path: '', redirectTo: '', pathMatch: 'full'},
+  { path: 'api/transactions', component: TransactionsComponent },
+  { path: 'api/users', component: UsersComponent}
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
-    TransactionsComponent
+    TransactionsComponent,
+    HeaderComponent,
+    UsersComponent
   ],
   imports: [
     MatTableModule,
+    MatToolbarModule,
+    MatMenuModule,
     BrowserModule,
     MatDatepickerModule,
     MatNativeDateModule,

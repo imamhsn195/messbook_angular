@@ -3,7 +3,6 @@ import { Transaction } from '../models/transactions.model';
 import { TransactionService } from '../services/transactions.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-
 @Component({
   selector: 'app-transactions',
   templateUrl: './transactions.component.html',

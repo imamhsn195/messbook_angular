@@ -1,0 +1,22 @@
+<p>
+    <mat-toolbar>
+        <span>Mass Book</span>
+    </mat-toolbar>
+    <button mat-button><a routerLink="/">Dashboard</a></button>
+    <!-- transactions menu -->
+    <button mat-button [matMenuTriggerFor]="transactionMenu">Transactions</button>
+    <mat-menu #transactionMenu="matMenu">
+        <button mat-menu-item>
+            <a routerLink="api/transactions">Add Transaction</a>
+        </button>
+        <button mat-menu-item>View Transactions</button>
+    </mat-menu>
+    <!-- users menu -->
+    <button mat-button [matMenuTriggerFor]="userMenu">Users</button>
+    <mat-menu #userMenu="matMenu">
+        <button mat-menu-item>
+            <a routerLink="api/users">Add User</a>
+        </button>
+        <button mat-menu-item>View Users</button>
+    </mat-menu>
+</p>

@@ -1,4 +1,3 @@
-// transactions.model.ts
 export interface Transaction {
     id: number;
     dateTime: Date;

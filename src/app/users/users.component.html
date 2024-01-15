@@ -1,0 +1,63 @@
+<mat-card>
+    <mat-card-header><h1>Add User</h1></mat-card-header>
+    <mat-card-content>
+        <form (submit)="addUser()">
+            <mat-form-field style="width: 100%;">
+                <mat-label for="username">Username</mat-label>
+                <input type="text" matInput [(ngModel)]="user.username" name="username">
+            </mat-form-field>
+            <mat-form-field style="width: 100%;">
+                <mat-label for="email">Email</mat-label>
+                <input type="text" matInput [(ngModel)]="user.email" name="email">
+            </mat-form-field>
+            <mat-form-field style="width: 100%;">
+                <mat-label for="phone">Phone</mat-label>
+                <input type="text" matInput [(ngModel)]="user.phone" name="phone">
+            </mat-form-field>
+            <mat-form-field style="width: 100%;">
+                <mat-label for="password">Password</mat-label>
+                <input type="password" matInput [(ngModel)]="user.password" name="password">
+            </mat-form-field>
+
+            <button type="button" color="primary" style="width: 100%; margin-bottom: 0.5em;" mat-flat-button (click)="fileInput.click()">Profile Picture (Optional):</button>
+            <input hidden  #fileInput type="file"  id="profile_picture" [(ngModel)]="user.profile_picture" name="profile_picture">
+
+            <button mat-flat-button color="accent" style="width: 100%;" type="submit">{{ isNewuser ? "Add" : 'Update' }} User</button>
+        </form>
+    </mat-card-content>
+    <mat-divider style="margin-top: 1.5em;"></mat-divider>
+    <mat-card-header><h1>All Users</h1></mat-card-header>
+        <mat-card-content>
+            <table mat-table [dataSource]="users" class="mat-elevation-z8">
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef> No. </th>
+                    <td mat-cell *matCellDef="let element"> {{ element.id }} </td>
+                </ng-container>
+                <ng-container matColumnDef="username">
+                    <th mat-header-cell *matHeaderCellDef> Username </th>
+                    <td mat-cell *matCellDef="let element"> {{ (element.username ) }} </td>
+                </ng-container>
+                <ng-container matColumnDef="email">
+                    <th mat-header-cell *matHeaderCellDef> Email </th>
+                    <td mat-cell *matCellDef="let element"> {{ element.email }} </td>
+                </ng-container>
+                <ng-container matColumnDef="phone">
+                    <th mat-header-cell *matHeaderCellDef> Phone </th>
+                    <td mat-cell *matCellDef="let element"> {{ element.phone }} </td>
+                </ng-container>
+                <ng-container matColumnDef="profile_picture">
+                    <th mat-header-cell *matHeaderCellDef> Profile Picture </th>
+                    <td mat-cell *matCellDef="let element"> {{ element.profile_picture }} </td>
+                </ng-container>
+                <ng-container matColumnDef="actions">
+                    <th mat-header-cell *matHeaderCellDef> Actions </th>
+                    <td mat-cell *matCellDef="let element"> 
+                        <button mat-button color="primary" (click)="getUserById(element.id)">Update</button> &nbsp;
+                        <button mat-button color="warn" (click)="deleteUser(element.id)">Delete</button>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="tableColumnHeaders"></tr>
+                <tr mat-row *matRowDef="let row; columns: tableColumnHeaders;"></tr>
+            </table>
+        </mat-card-content>
+    </mat-card>
