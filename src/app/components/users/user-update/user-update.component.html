@@ -1,0 +1,29 @@
+<mat-card>
+    <mat-card-header><h1>Update User</h1></mat-card-header>
+    <mat-card-content>
+        <form (submit)="updateUser()">
+            <mat-form-field style="width: 100%;">
+                <mat-label for="username">Username</mat-label>
+                <input type="text" matInput [(ngModel)]="user.username" name="username">
+            </mat-form-field>
+            <mat-form-field style="width: 100%;">
+                <mat-label for="email">Email</mat-label>
+                <input type="text" matInput [(ngModel)]="user.email" name="email">
+            </mat-form-field>
+            <mat-form-field style="width: 100%;">
+                <mat-label for="phone">Phone</mat-label>
+                <input type="text" matInput [(ngModel)]="user.phone" name="phone">
+            </mat-form-field>
+            <mat-form-field style="width: 100%;">
+                <mat-label for="password">Password</mat-label>
+                <input type="password" matInput [(ngModel)]="user.password" name="password">
+            </mat-form-field>
+
+            <button type="button" color="primary" style="width: 100%; margin-bottom: 0.5em;" mat-flat-button (click)="fileInput.click()">Profile Picture (Optional):</button>
+            <!-- <input hidden  #fileInput type="file"  id="profile_picture" [(ngModel)]="user.profile_picture" name="profile_picture"> -->
+            <input hidden #fileInput type="file" id="profile_picture" (change)="onFileChange($event)" name="profile_picture">
+
+            <button mat-flat-button color="accent" style="width: 100%;" type="submit">Update User</button>
+        </form>
+    </mat-card-content>
+</mat-card>

@@ -12,8 +12,8 @@
     <!-- users menu -->
     <button mat-button [matMenuTriggerFor]="userMenu">Users</button>
     <mat-menu #userMenu="matMenu">
-        <a mat-menu-item routerLink="api/users">Add User</a>
-        <button mat-menu-item>View Users</button>
+        <a mat-menu-item routerLink="api/users/create">Add User</a>
+        <a mat-menu-item routerLink="api/users">View Users</a>
     </mat-menu>
     <!-- Mess Book menu -->
     <button mat-button [matMenuTriggerFor]="messBookrMenu">Mess Books</button>

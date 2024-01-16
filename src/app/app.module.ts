@@ -25,28 +25,32 @@ import { MatSelectModule } from '@angular/material/select';
 import { AppComponent } from './app.component';
 import { TransactionsComponent } from './components/transactions/transactions.component';
 import { HeaderComponent } from './components/header/header.component';
-import { UsersComponent } from './components/users/users.component';
 import { MessBookComponent } from './components/mess-book/mess-book.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { UserCreateComponent } from './components/users/user-create/user-create.component';
+import { UserUpdateComponent } from './components/users/user-update/user-update.component';
+import { UserListComponent } from './components/users/user-list/user-list.component';
 
 const routes : Routes = [
   { path: '', redirectTo: 'api/dashboard', pathMatch: 'full'},
   { path: 'api/dashboard', component: DashboardComponent },
   { path: 'api/transactions', component: TransactionsComponent },
-  { path: 'api/users', component: UsersComponent },
+  { path: 'api/users', component: UserListComponent },
+  { path: 'api/users/create', component: UserCreateComponent },
+  { path: 'api/users/update/:id', component: UserUpdateComponent },
   { path: 'api/mess-books', component: MessBookComponent }
 ]
-
 
 @NgModule({
   declarations: [
     AppComponent,
     TransactionsComponent,
     HeaderComponent,
-    UsersComponent,
     MessBookComponent,
     DashboardComponent,
-    
+    UserCreateComponent,
+    UserUpdateComponent,
+    UserListComponent,
   ],
   imports: [
     BrowserModule,
