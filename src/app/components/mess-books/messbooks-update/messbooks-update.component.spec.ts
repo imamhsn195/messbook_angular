@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MessBookComponent } from './mess-book.component';
+import { MessbooksUpdateComponent } from './messbooks-update.component';
 
-describe('MessBookComponent', () => {
-  let component: MessBookComponent;
-  let fixture: ComponentFixture<MessBookComponent>;
+describe('MessbooksUpdateComponent', () => {
+  let component: MessbooksUpdateComponent;
+  let fixture: ComponentFixture<MessbooksUpdateComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MessBookComponent]
+      declarations: [MessbooksUpdateComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(MessBookComponent);
+    fixture = TestBed.createComponent(MessbooksUpdateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
-import { MessBook } from '../../models/mess-book.model';
-import { MessBookService } from '../../services/mess-book.service';
+import { MessBookService } from '../../../services/mess-book.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { FileUploadService } from '../../services/file-upload.service';
+import { MessBook } from '../../../models/mess-book.model';
+import { FileUploadService } from '../../../services/file-upload.service';
 
 @Component({
-  selector: 'app-mess-book',
-  templateUrl: './mess-book.component.html',
-  styleUrl: './mess-book.component.css'
+  selector: 'app-messbooks-list',
+  templateUrl: './messbooks-list.component.html',
+  styleUrl: './messbooks-list.component.css'
 })
-export class MessBookComponent {
+export class MessbooksListComponent {
 
   constructor(
     private messBookService: MessBookService, 
@@ -26,24 +26,6 @@ export class MessBookComponent {
     this.getMessBooks();
   }
   
-  addMessBook() : void {        
-    if(this.isNew){
-      const maxId = this.messbooks.reduce((max, t) => (t.id > max ? t.id : max), 0);
-      this.messbook.id = maxId + 1;
-      this.messBookService.addMessBook(this.messbook).subscribe(() => { 
-        this.getMessBooks();
-        this.showSnacBar('MessBook added successfully!', 'OK');
-      });
-    }else{
-      this.messBookService.UpdateMessBook(this.messbook).subscribe(() => { 
-        this.getMessBooks();
-        this.showSnacBar('MessBook updated succesfully!', 'OK');
-      });
-    }
-    this.isNew = true;
-    this.messbook = { id: 0, title: '', startDate: new Date(), endDate: new Date(), status: true, createdBy: 0, attachment: ''};
-  }
-
   getMessBooks(): void{
     this.messBookService.getMessBooks().subscribe((messbooks) => { this.messbooks = messbooks });
   }

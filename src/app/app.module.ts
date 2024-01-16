@@ -25,7 +25,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { AppComponent } from './app.component';
 // import { TransactionsComponent } from './components/transactions/transactions.component';
 import { HeaderComponent } from './components/header/header.component';
-import { MessBookComponent } from './components/mess-book/mess-book.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { UserCreateComponent } from './components/users/user-create/user-create.component';
 import { UserUpdateComponent } from './components/users/user-update/user-update.component';
@@ -33,6 +32,9 @@ import { UserListComponent } from './components/users/user-list/user-list.compon
 import { TransactionsCreateComponent } from './components/transactions/transactions-create/transactions-create.component';
 import { TransactionsUpdateComponent } from './components/transactions/transactions-update/transactions-update.component';
 import { TransactoinsListComponent } from './components/transactions/transactoins-list/transactoins-list.component';
+import { MessbooksCreateComponent } from './components/mess-books/messbooks-create/messbooks-create.component';
+import { MessbooksUpdateComponent } from './components/mess-books/messbooks-update/messbooks-update.component';
+import { MessbooksListComponent } from './components/mess-books/messbooks-list/messbooks-list.component';
 
 const routes : Routes = [
   { path: '', redirectTo: 'api/dashboard', pathMatch: 'full'},
@@ -49,7 +51,9 @@ const routes : Routes = [
   { path: 'api/users/update/:id', component: UserUpdateComponent },
 
   // MessBook Routes
-  { path: 'api/mess-books', component: MessBookComponent }
+  { path: 'api/mess-books/list', component: MessbooksListComponent },
+  { path: 'api/mess-books/create', component: MessbooksCreateComponent },
+  { path: 'api/mess-books/update/:id', component: MessbooksUpdateComponent },
 ]
 
 @NgModule({
@@ -57,7 +61,6 @@ const routes : Routes = [
     AppComponent,
     // TransactionsComponent,
     HeaderComponent,
-    MessBookComponent,
     DashboardComponent,
     UserCreateComponent,
     UserUpdateComponent,
@@ -65,6 +68,9 @@ const routes : Routes = [
     TransactionsCreateComponent,
     TransactionsUpdateComponent,
     TransactoinsListComponent,
+    MessbooksCreateComponent,
+    MessbooksUpdateComponent,
+    MessbooksListComponent,
   ],
   imports: [
     BrowserModule,
