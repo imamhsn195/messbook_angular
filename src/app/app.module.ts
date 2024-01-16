@@ -23,34 +23,48 @@ import { MatSelectModule } from '@angular/material/select';
 
 // Components
 import { AppComponent } from './app.component';
-import { TransactionsComponent } from './components/transactions/transactions.component';
+// import { TransactionsComponent } from './components/transactions/transactions.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MessBookComponent } from './components/mess-book/mess-book.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { UserCreateComponent } from './components/users/user-create/user-create.component';
 import { UserUpdateComponent } from './components/users/user-update/user-update.component';
 import { UserListComponent } from './components/users/user-list/user-list.component';
+import { TransactionsCreateComponent } from './components/transactions/transactions-create/transactions-create.component';
+import { TransactionsUpdateComponent } from './components/transactions/transactions-update/transactions-update.component';
+import { TransactoinsListComponent } from './components/transactions/transactoins-list/transactoins-list.component';
 
 const routes : Routes = [
   { path: '', redirectTo: 'api/dashboard', pathMatch: 'full'},
   { path: 'api/dashboard', component: DashboardComponent },
-  { path: 'api/transactions', component: TransactionsComponent },
-  { path: 'api/users', component: UserListComponent },
+
+  // Transaction Routes
+  { path: 'api/transactions/list', component: TransactoinsListComponent },
+  { path: 'api/transactions/create', component: TransactionsCreateComponent },
+  { path: 'api/transactions/update/:id', component: TransactionsUpdateComponent },
+
+  // Users Routes
+  { path: 'api/users/list', component: UserListComponent },
   { path: 'api/users/create', component: UserCreateComponent },
   { path: 'api/users/update/:id', component: UserUpdateComponent },
+
+  // MessBook Routes
   { path: 'api/mess-books', component: MessBookComponent }
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
-    TransactionsComponent,
+    // TransactionsComponent,
     HeaderComponent,
     MessBookComponent,
     DashboardComponent,
     UserCreateComponent,
     UserUpdateComponent,
     UserListComponent,
+    TransactionsCreateComponent,
+    TransactionsUpdateComponent,
+    TransactoinsListComponent,
   ],
   imports: [
     BrowserModule,

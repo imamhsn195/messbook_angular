@@ -6,14 +6,14 @@
     <!-- transactions menu -->
     <button mat-button [matMenuTriggerFor]="transactionMenu">Transactions</button>
     <mat-menu #transactionMenu="matMenu">
-        <a mat-menu-item routerLink="api/transactions">Add Transaction</a>
-        <button mat-menu-item>View Transactions</button>
+        <a mat-menu-item routerLink="api/transactions/create">Add Transaction</a>
+        <a mat-menu-item routerLink="api/transactions/list">View Transactions</a>
     </mat-menu>
     <!-- users menu -->
     <button mat-button [matMenuTriggerFor]="userMenu">Users</button>
     <mat-menu #userMenu="matMenu">
         <a mat-menu-item routerLink="api/users/create">Add User</a>
-        <a mat-menu-item routerLink="api/users">View Users</a>
+        <a mat-menu-item routerLink="api/users/list">View Users</a>
     </mat-menu>
     <!-- Mess Book menu -->
     <button mat-button [matMenuTriggerFor]="messBookrMenu">Mess Books</button>
