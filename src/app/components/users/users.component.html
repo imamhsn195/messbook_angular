@@ -20,7 +20,8 @@
             </mat-form-field>
 
             <button type="button" color="primary" style="width: 100%; margin-bottom: 0.5em;" mat-flat-button (click)="fileInput.click()">Profile Picture (Optional):</button>
-            <input hidden  #fileInput type="file"  id="profile_picture" [(ngModel)]="user.profile_picture" name="profile_picture">
+            <!-- <input hidden  #fileInput type="file"  id="profile_picture" [(ngModel)]="user.profile_picture" name="profile_picture"> -->
+            <input hidden #fileInput type="file" id="profile_picture" (change)="onFileChange($event)" name="profile_picture">
 
             <button mat-flat-button color="accent" style="width: 100%;" type="submit">{{ isNewuser ? "Add" : 'Update' }} User</button>
         </form>

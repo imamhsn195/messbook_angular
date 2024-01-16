@@ -1,7 +1,7 @@
 <mat-card> 
     <mat-card-header><h1>Add Transactions</h1></mat-card-header>
     <mat-card-content>
-        <form (submit)="addTransaction">
+        <form (submit)="addTransaction()">
             <mat-form-field  style="width: 100%;">
                 <mat-label>Choose a date</mat-label>
                 <input matInput [matDatepicker]="picker" [(ngModel)] = "newTransaction.dateTime" name="dateTime">
@@ -19,7 +19,8 @@
             </mat-form-field>
             
                 <button type="button" color="primary" style="width: 100%; margin-bottom: 0.5em;" mat-flat-button (click)="fileInput.click()">Attachment (Optional):</button>
-                <input hidden  #fileInput type="file"  id="attachment" [(ngModel)]="newTransaction.attachment" name="attachment">
+                <!-- <input hidden  #fileInput type="file"  id="attachment" [(ngModel)]="newTransaction.attachment" name="attachment"> -->
+                <input hidden #fileInput type="file" id="attachment" (change)="onFileChange($event)" name="attachment">
 
                 <button mat-flat-button color="accent" style="width: 100%;" type="submit">{{ isNewTransaction ? "Add" : 'Update' }} Transaction</button>
         </form>

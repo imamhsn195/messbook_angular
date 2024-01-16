@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { User } from '../models/users.model';
-import { UserService } from '../services/users.service';
+import { User } from '../../models/users.model';
+import { UserService } from '../../services/users.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { FileUploadService } from '../../services/file-upload.service';
 
 @Component({
   selector: 'app-users',
@@ -14,7 +15,11 @@ export class UsersComponent {
   users: User[] = [];
   user: User = { id: 0, username: '', email: '', phone: '', password: '', profile_picture: '' };
 
-  constructor(private userService: UserService, private _snackBar: MatSnackBar) {}
+  constructor(
+    private userService: UserService, 
+    private _snackBar: MatSnackBar,
+    private fileUploadService: FileUploadService
+    ) {}
 
   ngOnInit(): void{
     this.getUsers();
@@ -58,4 +63,10 @@ export class UsersComponent {
     this._snackBar.open(message , action, { horizontalPosition: 'center', verticalPosition: 'top', panelClass:panelClass});
   }
 
+  onFileChange(event: any): void {
+    const selectedFile = this.fileUploadService.handleFileInput(event);
+    if (selectedFile) {
+      this.user.profile_picture = this.fileUploadService.extractFileName(selectedFile);
+    }
+  }
 }

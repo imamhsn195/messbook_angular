@@ -4,6 +4,6 @@ export interface MessBook{
     startDate: Date,
     endDate: Date,
     createdBy: number,
-    attachment: string,
+    attachment?: string,
     status: boolean
 }

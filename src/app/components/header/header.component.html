@@ -2,29 +2,23 @@
     <mat-toolbar>
         <span>Mass Book</span>
     </mat-toolbar>
-    <button mat-button><a routerLink="/">Dashboard</a></button>
+    <a  mat-button routerLink="/">Dashboard</a>
     <!-- transactions menu -->
     <button mat-button [matMenuTriggerFor]="transactionMenu">Transactions</button>
     <mat-menu #transactionMenu="matMenu">
-        <button mat-menu-item>
-            <a routerLink="api/transactions">Add Transaction</a>
-        </button>
+        <a mat-menu-item routerLink="api/transactions">Add Transaction</a>
         <button mat-menu-item>View Transactions</button>
     </mat-menu>
     <!-- users menu -->
     <button mat-button [matMenuTriggerFor]="userMenu">Users</button>
     <mat-menu #userMenu="matMenu">
-        <button mat-menu-item>
-            <a routerLink="api/users">Add User</a>
-        </button>
+        <a mat-menu-item routerLink="api/users">Add User</a>
         <button mat-menu-item>View Users</button>
     </mat-menu>
     <!-- Mess Book menu -->
     <button mat-button [matMenuTriggerFor]="messBookrMenu">Mess Books</button>
     <mat-menu #messBookrMenu="matMenu">
-        <button mat-menu-item>
-            <a routerLink="api/mess-books">Add Mess Book</a>
-        </button>
+        <a mat-menu-item routerLink="api/mess-books">Add Mess Book</a>
         <button mat-menu-item>View Mess Books</button>
     </mat-menu>
 </p>

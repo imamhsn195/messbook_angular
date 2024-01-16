@@ -1,7 +1,7 @@
 <mat-card> 
     <mat-card-header><h1>Add messbook</h1></mat-card-header>
     <mat-card-content>
-        <form (submit)="addMessBook">
+        <form (submit)="addMessBook()">
             <mat-form-field style="width: 100%;">
                 <mat-label for="title">Title</mat-label>
                 <input type="text" matInput [(ngModel)]="messbook.title" name="title">
@@ -21,7 +21,8 @@
                 <mat-datepicker #endDate></mat-datepicker>
             </mat-form-field>
                 <button type="button" color="primary" style="width: 100%; margin-bottom: 0.5em;" mat-flat-button (click)="fileInput.click()">Attachment (Optional):</button>
-                <input hidden  #fileInput type="file"  id="attachment" [(ngModel)]="messbook.attachment" name="attachment">
+                <!-- <input hidden  #fileInput type="file"  id="attachment" [(ngModel)]="messbook.attachment" name="attachment"> -->
+                <input hidden #fileInput type="file" id="attachment" (change)="onFileChange($event)" name="attachment">
 
                 <button mat-flat-button color="accent" style="width: 100%;" type="submit">{{ isNew ? "Add" : 'Update' }} Transaction</button>
         </form>
