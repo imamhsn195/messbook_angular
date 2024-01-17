@@ -12,17 +12,17 @@ import { NgForm } from '@angular/forms';
   styleUrl: './user-create.component.css'
 })
 export class UserCreateComponent {
-  
-  ngOnInit(): void{
-    this.getUsers();
-  }
- 
   constructor(
     private userService: UserService, 
     private _snackBar: MatSnackBar,
     private fileUploadService: FileUploadService,
     private router: Router
     ) {}
+      
+  ngOnInit(): void{
+    this.getUsers();
+  }
+ 
   users: User[] = [];
   user: User = { id: 0, username: '', email: '', phone: '', password: '', profile_picture: '' };
   addUser(form: NgForm) : void {    

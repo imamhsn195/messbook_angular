@@ -1,7 +1,7 @@
 <mat-card>
     <mat-card-header><h1>Add User</h1></mat-card-header>
     <mat-card-content>
-        <form (submit)="addUser(userForm)" #userForm="ngForm">
+        <form (submit)="addUser(form)" #form="ngForm">
             <mat-form-field style="width: 100%;">
                 <mat-label for="username">Username</mat-label>
                 <input type="text" matInput [(ngModel)]="user.username" name="username" #username="ngModel" required>
