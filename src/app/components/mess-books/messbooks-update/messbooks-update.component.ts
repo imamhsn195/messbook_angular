@@ -4,6 +4,7 @@ import { MessBook } from '../../../models/mess-book.model';
 import { FileUploadService } from '../../../services/file-upload.service';
 import { MessBookService } from '../../../services/mess-book.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-messbooks-update',
@@ -26,13 +27,15 @@ export class MessbooksUpdateComponent {
     messbooks: MessBook[] = [];
     messbook: MessBook = { id: 0, title: '', startDate: new Date(), endDate: new Date(), status: true, createdBy: 0, attachment: ''};
   
-  update() : void {        
+  submit(form: NgForm) : void {    
+    if(!form.invalid){   
       const maxId = this.messbooks.reduce((max, t) => (t.id > max ? t.id : max), 0);
       this.messbook.id = maxId + 1;
       this.messBookService.addMessBook(this.messbook).subscribe(() => { 
         this.router.navigate(['/api/mess-books/list'])
         this.showSnacBar('MessBook added successfully!', 'OK');
       });
+    } 
   }
 
   getRecordById(id: number): void {

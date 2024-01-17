@@ -1,24 +1,25 @@
 <mat-card> 
     <mat-card-header><h1>Add messbook</h1></mat-card-header>
     <mat-card-content>
-        <form (submit)="create()">
+        <form (submit)="submit(form)" #form="ngForm">
             <mat-form-field style="width: 100%;">
                 <mat-label for="title">Title</mat-label>
-                <input type="text" matInput [(ngModel)]="messbook.title" name="title">
+                <input type="text" matInput [(ngModel)]="messbook.title" name="title" #title="ngModel" required>
+                <mat-error *ngIf="title.invalid">Please enter a title.</mat-error>
             </mat-form-field>
             <mat-form-field  style="width: 100%;">
                 <mat-label>Choose a Start date</mat-label>
-                <input matInput [matDatepicker]="startDate" [(ngModel)] = "messbook.startDate" name="startDate">
-                <mat-hint>MM/DD/YYYY</mat-hint>
-                <mat-datepicker-toggle matIconSuffix [for]="startDate"></mat-datepicker-toggle>
-                <mat-datepicker #startDate></mat-datepicker>
+                <input matInput [matDatepicker]="picker" [(ngModel)] = "messbook.startDate" name="startDate" #startDate = "ngModel" required>
+                <mat-error *ngIf="startDate.invalid">Please select a start date.</mat-error>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
             <mat-form-field  style="width: 100%;">
                 <mat-label>Choose a End date</mat-label>
-                <input matInput [matDatepicker]="endDate" [(ngModel)] = "messbook.endDate" name="endDate">
-                <mat-hint>MM/DD/YYYY</mat-hint>
-                <mat-datepicker-toggle matIconSuffix [for]="endDate"></mat-datepicker-toggle>
-                <mat-datepicker #endDate></mat-datepicker>
+                <input matInput [matDatepicker]="picker" [(ngModel)] = "messbook.endDate" name="endDate" #endDate = "ngModel" required>
+                <mat-error *ngIf="endDate.invalid">Please select a end date.</mat-error>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
                 <button type="button" color="primary" style="width: 100%; margin-bottom: 0.5em;" mat-flat-button (click)="fileInput.click()">Attachment (Optional):</button>
                 <!-- <input hidden  #fileInput type="file"  id="attachment" [(ngModel)]="messbook.attachment" name="attachment"> -->

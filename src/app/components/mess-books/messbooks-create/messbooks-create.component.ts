@@ -4,6 +4,7 @@ import { MessBookService } from '../../../services/mess-book.service';
 import { FileUploadService } from '../../../services/file-upload.service';
 import { MessBook } from '../../../models/mess-book.model';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-messbooks-create',
@@ -22,19 +23,21 @@ export class MessbooksCreateComponent {
   
   tableColumnHeaders: string[] = ["id", "title", 'startDate', 'endDate', 'status', 'attachment', 'actions' ]
   messbooks: MessBook[] = [];
-  messbook: MessBook = { id: 0, title: '', startDate: new Date(), endDate: new Date(), status: true, createdBy: 0, attachment: ''};
+  messbook: MessBook = { id: 0, title: '', status: true, createdBy: 0, attachment: ''};
 
   ngOnInit(): void{
     this.getMessBooks();
   }
   
-  create() : void {    
+  submit(form: NgForm) : void {   
+    if(!form.invalid){
       const maxId = this.messbooks.reduce((max, t) => (t.id > max ? t.id : max), 0);
       this.messbook.id = maxId + 1;
       this.messBookService.addMessBook(this.messbook).subscribe(() => { 
         this.router.navigate(['/api/mess-books/list'])
         this.showSnacBar('MessBook added successfully!', 'OK');
-      });
+      });  
+    } 
   }
 
   getMessBooks(): void{
