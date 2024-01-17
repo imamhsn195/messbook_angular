@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { FileUploadService } from '../../../services/file-upload.service';
 import { TransactionService } from '../../../services/transactions.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-transactions-update',
@@ -20,16 +21,18 @@ export class TransactionsUpdateComponent {
   ) {}
 
   transactions: Transaction[] = [];
-  transaction: Transaction =  { id: 0, dateTime: new Date, description: '', attachment: '', amount: 0.00 };
+  transaction: Transaction =  { id: 0, description: '', attachment: '', amount: 0.00 };
   ngOnInit(): void{
     this.getTransactionByid(Number(this.route.snapshot.paramMap.get('id')))
   }
 
-  update(): void{
+  submit(form: NgForm): void{
+    if(!form.invalid){
       this.transactionService.updateTransaction(this.transaction).subscribe((transaction) => {
         this.router.navigate(['api/transactions/list'])
         this.showSnacBar('Transaction updated successfully!','OK');
       })
+    }
     }
   getTransactionByid(id: number): void {
     this.transactionService.getTransactionById(id).subscribe(transaction =>{
