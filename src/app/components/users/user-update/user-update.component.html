@@ -1,0 +1,36 @@
+<mat-card>
+    <mat-card-header><h1>Update User</h1></mat-card-header>
+    <mat-card-content>
+        <form (submit)="submit(form)" #form="ngForm">
+            <mat-form-field style="width: 100%;">
+                <mat-label for="username">Username</mat-label>
+                <input type="text" matInput [(ngModel)]="user.username" name="username" #username="ngModel" required>
+                <mat-error *ngIf="username.invalid">Please Enter a username.</mat-error>
+            </mat-form-field>
+            <mat-form-field style="width: 100%;">
+                <mat-label for="email">Email</mat-label>
+                <input type="email" matInput [(ngModel)]="user.email" name="email" email #email="ngModel" required>
+                <div *ngIf="email?.dirty || email?.touched">
+                  <mat-error *ngIf="email?.errors?.['required']">Email is required.</mat-error>
+                  <mat-error *ngIf="email?.errors?.['email'] && !email?.errors?.['required']">Invalid email format.</mat-error>
+                </div>
+              </mat-form-field>
+            <mat-form-field style="width: 100%;">
+                <mat-label for="phone">Phone</mat-label>
+                <input type="phone" matInput [(ngModel)]="user.phone" name="phone" #phone="ngModel" required>
+                <mat-error *ngIf="phone.invalid">Please Enter a phone.</mat-error>
+            </mat-form-field>
+            <mat-form-field style="width: 100%;">
+                <mat-label for="password">Password</mat-label>
+                <input type="password" matInput [(ngModel)]="user.password" name="password" #password="ngModel" required>
+                <mat-error *ngIf="password.invalid">Please Enter a password.</mat-error>
+            </mat-form-field>
+
+            <button type="button" color="primary" style="width: 100%; margin-bottom: 0.5em;" mat-flat-button (click)="fileInput.click()">Profile Picture (Optional):</button>
+            <!-- <input hidden  #fileInput type="file"  id="profile_picture" [(ngModel)]="user.profile_picture" name="profile_picture"> -->
+            <input hidden #fileInput type="file" id="profile_picture" (change)="onFileChange($event)" name="profile_picture">
+
+            <button mat-flat-button color="accent" style="width: 100%;" type="submit">Update User</button>
+        </form>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,36 @@
+<mat-card>
+    <mat-card-header><h1>All Users</h1></mat-card-header>
+    <mat-card-content>
+        <table mat-table [dataSource]="users" class="mat-elevation-z8">
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> No. </th>
+                <td mat-cell *matCellDef="let element"> {{ element.id }} </td>
+            </ng-container>
+            <ng-container matColumnDef="username">
+                <th mat-header-cell *matHeaderCellDef> Username </th>
+                <td mat-cell *matCellDef="let element"> {{ (element.username ) }} </td>
+            </ng-container>
+            <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef> Email </th>
+                <td mat-cell *matCellDef="let element"> {{ element.email }} </td>
+            </ng-container>
+            <ng-container matColumnDef="phone">
+                <th mat-header-cell *matHeaderCellDef> Phone </th>
+                <td mat-cell *matCellDef="let element"> {{ element.phone }} </td>
+            </ng-container>
+            <ng-container matColumnDef="profile_picture">
+                <th mat-header-cell *matHeaderCellDef> Profile Picture </th>
+                <td mat-cell *matCellDef="let element"> {{ element.profile_picture }} </td>
+            </ng-container>
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef> Actions </th>
+                <td mat-cell *matCellDef="let element"> 
+                    <a mat-button color="primary" routerLink="/api/users/update/{{element.id}}">Update</a>
+                    <button mat-button color="warn" (click)="deleteUser(element.id)">Delete</button>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="tableColumnHeaders"></tr>
+            <tr mat-row *matRowDef="let row; columns: tableColumnHeaders;"></tr>
+        </table>
+    </mat-card-content>
+</mat-card>
