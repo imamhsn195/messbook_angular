@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { User } from '../../../models/users.model';
+import { User } from '../users-model';
 import { FileUploadService } from '../../../services/file-upload.service';
-import { UserService } from '../../../services/users.service';
+import { UserService } from '../users-service';
 
 @Component({
   selector: 'app-user-list',

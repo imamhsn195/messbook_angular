@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { User } from '../../../models/users.model';
-import { UserService } from '../../../services/users.service';
+import { User } from '../users-model';
+import { UserService } from '../users-service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FileUploadService } from '../../../services/file-upload.service';
 import { ActivatedRoute, Router } from '@angular/router';

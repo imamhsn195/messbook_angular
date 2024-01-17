@@ -23,7 +23,6 @@ import { MatSelectModule } from '@angular/material/select';
 
 // Components
 import { AppComponent } from './app.component';
-// import { TransactionsComponent } from './components/transactions/transactions.component';
 import { HeaderComponent } from './components/header/header.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { UserCreateComponent } from './components/users/user-create/user-create.component';
@@ -59,7 +58,6 @@ const routes : Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    // TransactionsComponent,
     HeaderComponent,
     DashboardComponent,
     UserCreateComponent,

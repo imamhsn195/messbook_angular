@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MessBookService } from '../../../services/mess-book.service';
+import { MessBookService } from '../mess-book-service';
 import { FileUploadService } from '../../../services/file-upload.service';
-import { MessBook } from '../../../models/mess-book.model';
+import { MessBook } from '../mess-book-model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 

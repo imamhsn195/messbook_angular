@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { MessBookService } from '../../../services/mess-book.service';
+import { MessBookService } from '../mess-book-service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MessBook } from '../../../models/mess-book.model';
+import { MessBook } from '../mess-book-model';
 import { FileUploadService } from '../../../services/file-upload.service';
 
 @Component({
