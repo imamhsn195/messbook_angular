@@ -34,6 +34,9 @@ import { TransactoinsListComponent } from './components/transactions/transactoin
 import { MessbooksCreateComponent } from './components/mess-books/messbooks-create/messbooks-create.component';
 import { MessbooksUpdateComponent } from './components/mess-books/messbooks-update/messbooks-update.component';
 import { MessbooksListComponent } from './components/mess-books/messbooks-list/messbooks-list.component';
+import { MessMembersCreateComponent } from './components/mess-members/mess-members-create/mess-members-create.component';
+import { MessMembersUpdateComponent } from './components/mess-members/mess-members-update/mess-members-update.component';
+import { MessMembersListComponent } from './components/mess-members/mess-members-list/mess-members-list.component';
 
 const routes : Routes = [
   { path: '', redirectTo: 'api/dashboard', pathMatch: 'full'},
@@ -53,6 +56,11 @@ const routes : Routes = [
   { path: 'api/mess-books/list', component: MessbooksListComponent },
   { path: 'api/mess-books/create', component: MessbooksCreateComponent },
   { path: 'api/mess-books/update/:id', component: MessbooksUpdateComponent },
+
+    // MessBook Routes
+    { path: 'api/mess-members/list', component: MessMembersListComponent },
+    { path: 'api/mess-members/create', component: MessMembersCreateComponent },
+    { path: 'api/mess-members/update/:id', component: MessbooksUpdateComponent },
 ]
 
 @NgModule({
@@ -69,6 +77,9 @@ const routes : Routes = [
     MessbooksCreateComponent,
     MessbooksUpdateComponent,
     MessbooksListComponent,
+    MessMembersCreateComponent,
+    MessMembersUpdateComponent,
+    MessMembersListComponent,
   ],
   imports: [
     BrowserModule,

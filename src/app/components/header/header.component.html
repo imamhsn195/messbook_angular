@@ -21,4 +21,11 @@
         <a mat-menu-item routerLink="api/users/create">Add User</a>
         <a mat-menu-item routerLink="api/users/list">View Users</a>
     </mat-menu>
+
+    <!-- users menu -->
+    <button mat-button [matMenuTriggerFor]="messMemberrMenu">Mess Members</button>
+    <mat-menu #messMemberrMenu="matMenu">
+        <a mat-menu-item routerLink="api/mess-members/create">Add mess members</a>
+        <a mat-menu-item routerLink="api/mess-members/list">View mess member</a>
+    </mat-menu>
 </p>
