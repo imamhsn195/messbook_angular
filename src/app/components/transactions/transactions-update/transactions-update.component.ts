@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Transaction } from '../transactions-model';
+import { Transaction } from '../transactions.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FileUploadService } from '../../../services/file-upload.service';
 import { TransactionService } from '../transactions-service';

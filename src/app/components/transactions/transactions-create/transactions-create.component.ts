@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { TransactionService } from '../transactions-service';
 import { FileUploadService } from '../../../services/file-upload.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Transaction } from '../transactions-model';
+import { Transaction } from '../transactions.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 

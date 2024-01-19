@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { User } from '../users-model';
+import { User } from '../users.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FileUploadService } from '../../../services/file-upload.service';
-import { UserService } from '../users-service';
+import { UserService } from '../users.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 

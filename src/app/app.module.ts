@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
@@ -16,7 +16,6 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSelectModule } from '@angular/material/select';
@@ -60,53 +59,56 @@ const routes : Routes = [
     // MessBook Routes
     { path: 'api/mess-members/list', component: MessMembersListComponent },
     { path: 'api/mess-members/create', component: MessMembersCreateComponent },
-    { path: 'api/mess-members/update/:id', component: MessbooksUpdateComponent },
+    { path: 'api/mess-members/update/:id', component: MessMembersUpdateComponent },
 ]
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    DashboardComponent,
-    UserCreateComponent,
-    UserUpdateComponent,
-    UserListComponent,
-    TransactionsCreateComponent,
-    TransactionsUpdateComponent,
-    TransactoinsListComponent,
-    MessbooksCreateComponent,
-    MessbooksUpdateComponent,
-    MessbooksListComponent,
-    MessMembersCreateComponent,
-    MessMembersUpdateComponent,
-    MessMembersListComponent,
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    FormsModule,
-    BrowserAnimationsModule,
-    RouterModule,
-    RouterModule.forRoot(routes),
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+        DashboardComponent,
 
-    // Angular Material Modules
-    MatTableModule,
-    MatToolbarModule,
-    MatMenuModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatCardModule,
-    MatInputModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatDividerModule,
-    MatSelectModule,
-    // In-memory Web API for demo purposes
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService),
-  ],
-  exports: [RouterModule],
-  providers: [],
-  bootstrap: [AppComponent]
+        UserCreateComponent,
+        UserUpdateComponent,
+        UserListComponent,
+
+        TransactionsCreateComponent,
+        TransactionsUpdateComponent,
+        TransactoinsListComponent,
+
+        MessbooksCreateComponent,
+        MessbooksUpdateComponent,
+        MessbooksListComponent,
+
+        MessMembersListComponent,
+        MessMembersCreateComponent,
+        MessMembersUpdateComponent,
+    ],
+    exports: [RouterModule],
+    providers: [],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        FormsModule,
+        BrowserAnimationsModule,
+        RouterModule,
+        ReactiveFormsModule,
+        RouterModule.forRoot(routes),
+        // Angular Material Modules
+        MatTableModule,
+        MatToolbarModule,
+        MatMenuModule,
+        MatDatepickerModule,
+        MatCardModule,
+        MatInputModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatIconModule,
+        MatDividerModule,
+        MatSelectModule,
+        // In-memory Web API for demo purposes
+        HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService),
+    ]
 })
 export class AppModule { }
