@@ -28,10 +28,6 @@ export class UserListComponent {
       this.users = users });
   }
 
-  // getUserById(id: number): void {
-  //   this.userService.getUserById(id).subscribe((user) => {});
-  // }
-  
   deleteUser(id: number): void{
     this.userService.deleteUser(id).subscribe(() => {
       this.showSnacBar('User deleted successfully!', "OK")

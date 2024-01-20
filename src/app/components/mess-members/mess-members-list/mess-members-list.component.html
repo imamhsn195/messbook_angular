@@ -1,1 +1,38 @@
-<p>mess-members-list works!</p>
+<mat-card>
+    <mat-card-header><h1>All Members</h1></mat-card-header>
+    <mat-card-content>
+        <table mat-table [dataSource]="messMembers" class="mat-elevation-z8">
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> No. </th>
+                <td mat-cell *matCellDef="let element"> {{ element.id }} </td>
+            </ng-container>
+            <ng-container matColumnDef="messbook">
+                <th mat-header-cell *matHeaderCellDef> Messbook </th>
+                <td mat-cell *matCellDef="let element"> {{ (element.messbook.title ) }} </td>
+            </ng-container>
+            <ng-container matColumnDef="members">
+                <th mat-header-cell *matHeaderCellDef> Members </th>
+                <td mat-cell *matCellDef="let element"> 
+                    <span *ngFor="let member of element.members; let isLast = last">{{ member.username }}{{ !isLast ? ", " : "" }}</span>    
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="invidedBy">
+                <th mat-header-cell *matHeaderCellDef> Invided By </th>
+                <td mat-cell *matCellDef="let element"> {{ element.invidedBy.username }} </td>
+            </ng-container>
+            <ng-container matColumnDef="isAccepted">
+                <th mat-header-cell *matHeaderCellDef> Is Accepted </th>
+                <td mat-cell *matCellDef="let element"> {{ element.isAccepted ? "Yes" : "No" }} </td>
+            </ng-container>
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef> Actions </th>
+                <td mat-cell *matCellDef="let element"> 
+                    <a mat-button color="primary" routerLink="api/mess-members/update/{{element.id}}">Update</a>
+                    <button mat-button color="warn" (click)="deleteMessMember(element.id)">Delete</button>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="tableColumnHeaders"></tr>
+            <tr mat-row *matRowDef="let row; columns: tableColumnHeaders;"></tr>
+        </table>
+    </mat-card-content>
+</mat-card>

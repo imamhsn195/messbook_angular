@@ -16,27 +16,28 @@ export class MessMembersCreateComponent {
     private messBookService: MessBookService
     ){}
 
-    ngOnInit(): void{
-      this.getUsers();
-      this.getMessBooks();
-    }
+  ngOnInit(): void{
+    this.getUsers();
+    this.getMessBooks();
+  }
     
   messbooksList: MessBook[] = [];
   userList: User[] = [];
   
-  myGroup = new FormGroup({
-    messBookId: new FormControl(),
-    userId: new FormControl(),
+  formGroup = new FormGroup({
+    messBook: new FormControl(),
+    members: new FormControl(),
     invitedBy: new FormControl(),
     isAccepted: new FormControl(),
-});
-getUsers(): void{
-  this.userService.getUsers().subscribe((users) => {
-    this.userList = users });
-}
+  });
 
-getMessBooks(): void{
-  this.messBookService.getMessBooks().subscribe((messbooks) => { this.messbooksList = messbooks });
-}
+  getUsers(): void{
+    this.userService.getUsers().subscribe((users) => {
+      this.userList = users });
+  }
+
+  getMessBooks(): void{
+    this.messBookService.getMessBooks().subscribe((messbooks) => { this.messbooksList = messbooks });
+  }
 
 }
