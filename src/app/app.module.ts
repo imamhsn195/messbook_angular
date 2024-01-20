@@ -19,6 +19,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSelectModule } from '@angular/material/select';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 // Components
 import { AppComponent } from './app.component';
@@ -96,6 +97,7 @@ const routes : Routes = [
         ReactiveFormsModule,
         RouterModule.forRoot(routes),
         // Angular Material Modules
+        MatCheckboxModule,
         MatTableModule,
         MatToolbarModule,
         MatMenuModule,

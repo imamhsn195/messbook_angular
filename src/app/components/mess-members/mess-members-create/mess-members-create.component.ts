@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UserService } from '../../users/users.service';
+import { User } from '../../users/users.model';
+import { MessBookService } from '../../mess-books/mess-book.service';
+import { MessBook } from '../../mess-books/mess-book.model';
 
 @Component({
   selector: 'app-mess-members-create',
@@ -7,17 +11,32 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   styleUrl: './mess-members-create.component.css',
 })
 export class MessMembersCreateComponent {
-  constructor(){}
+  constructor(
+    private userService: UserService, 
+    private messBookService: MessBookService
+    ){}
 
-  messbooksList: string[] = ['MessBook 1', 'MessBook 2', 'MessBook 3', 'MessBook 4', 'MessBook 5', 'MessBook 6'];
-  userList: string[] = ['User 1', 'User 2', 'User 3', 'User 4', 'User 5', 'User 6'];
-
+    ngOnInit(): void{
+      this.getUsers();
+      this.getMessBooks();
+    }
+    
+  messbooksList: MessBook[] = [];
+  userList: User[] = [];
+  
   myGroup = new FormGroup({
     messBookId: new FormControl(),
     userId: new FormControl(),
     invitedBy: new FormControl(),
     isAccepted: new FormControl(),
-
 });
+getUsers(): void{
+  this.userService.getUsers().subscribe((users) => {
+    this.userList = users });
+}
+
+getMessBooks(): void{
+  this.messBookService.getMessBooks().subscribe((messbooks) => { this.messbooksList = messbooks });
+}
 
 }

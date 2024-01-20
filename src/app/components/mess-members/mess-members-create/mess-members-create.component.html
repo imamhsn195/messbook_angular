@@ -5,8 +5,8 @@
             <mat-form-field style="width: 100%;">
                 <mat-label>MessBooks</mat-label>
                 <mat-select formControlName="messBookId">
-                  @for (messBookId of messbooksList; track messBookId) {
-                    <mat-option [value]="messBookId">{{ messBookId }}</mat-option>
+                  @for (messBook of messbooksList; track messBook) {
+                    <mat-option [value]="messBook.id">{{ messBook.title }}</mat-option>
                   }
                 </mat-select>
               </mat-form-field>
@@ -14,21 +14,30 @@
               <mat-form-field style="width: 100%;">
                 <mat-label>Users</mat-label>
                 <mat-select formControlName="userId">
-                  @for (userId of userList; track userId) {
-                    <mat-option [value]="userId">{{ userId }}</mat-option>
+                  @for (user of userList; track user) {
+                    <mat-option [value]="user.id">{{ user.username }}</mat-option>
                   }
                 </mat-select>
             </mat-form-field>
               <mat-form-field style="width: 100%;">
                 <mat-label>Invited By</mat-label>
                 <mat-select formControlName="invitedBy" multiple>
-                  @for (invitedBy of userList; track invitedBy) {
-                    <mat-option [value]="invitedBy">{{ invitedBy }}</mat-option>
+                  @for (user of userList; track user) {
+                    <mat-option [value]="user.id">{{ user.username }}</mat-option>
                   }
                 </mat-select>
               </mat-form-field>
-                
+              <mat-checkbox
+                  class="example-margin"
+                  formControlName="isAccepted"
+                  labelPosition="after">
+                I'm a checkbox
+              </mat-checkbox>
             <button mat-flat-button color="accent" style="width: 100%;" type="submit">Add Member</button>
+            <p>messBookId: {{ this.myGroup.value.messBookId }}</p>
+            <p>userId: {{ this.myGroup.value.userId }}</p>
+            <p>invitedBy: {{ this.myGroup.value.invitedBy }}</p>
+            <p>isApproved: {{ this.myGroup.value.isAccepted }}</p>
         </form>
     </mat-card-content>
 </mat-card>
