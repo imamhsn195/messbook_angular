@@ -1,37 +1,42 @@
 <mat-card>
-    <mat-card-header>Add MessBook Member</mat-card-header>
-    <mat-card-content>
-        <form [formGroup]="formGroup">
-            <mat-form-field style="width: 100%;">
-                <mat-label>MessBooks</mat-label>
-                <mat-select formControlName="messBook">
-                  @for (messBook of messbooksList; track messBook) {
-                    <mat-option [value]="messBook">{{ messBook.title }}</mat-option>
-                  }
-                </mat-select>
-              </mat-form-field>
-              <mat-form-field style="width: 100%;">
-                <mat-label>Members</mat-label>
-                <mat-select formControlName="members"multiple>
-                  @for (member of userList; track member) {
-                    <mat-option [value]="member">{{ member.username }}</mat-option>
-                  }
-                </mat-select>
-            </mat-form-field>
-              <mat-form-field style="width: 100%;">
-                <mat-label>Invited By</mat-label>
-                <mat-select formControlName="invitedBy" >
-                  @for (user of userList; track user) {
-                    <mat-option [value]="user">{{ user.username }}</mat-option>
-                  }
-                </mat-select>
-              </mat-form-field>
-              <mat-checkbox class="example-margin" formControlName="isAccepted" labelPosition="after"> Is Accepted </mat-checkbox>
-            <button mat-flat-button color="accent" style="width: 100%;" type="submit">Add Member</button>
-            <p>messBookId: {{ this.formGroup.value.messBook }}</p>
-            <p>userId: {{ this.formGroup.value.members }}</p>
-            <p>invitedBy: {{ this.formGroup.value.invitedBy }}</p>
-            <p>isApproved: {{ this.formGroup.value.isAccepted }}</p>
-        </form>
-    </mat-card-content>
+  <mat-card-header>Add MessBook Member</mat-card-header>
+  <mat-card-content>
+    <form (submit)="submit(form)" #form="ngForm">
+      <mat-form-field style="width: 100%;">
+        <mat-label>MessBooks</mat-label>
+        <mat-select [(ngModel)]="messBookMember.messBook" name="messBook">
+          <mat-option *ngFor="let messBook of messbooksList" [value]="messBook">
+            {{ messBook.title }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field style="width: 100%;">
+        <mat-label>Member</mat-label>
+        <mat-select [(ngModel)]="messBookMember.member" name="messBookMember">
+          <mat-option *ngFor="let member of userList" [value]="member">
+            {{ member.username }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <mat-form-field style="width: 100%;">
+        <mat-label>Invited By</mat-label>
+        <mat-select [(ngModel)]="messBookMember.invitedBy" #invitedBy="ngModel" name="invitedBy" required>
+          <mat-option *ngFor="let user of userList" [value]="user">
+            {{ user.username }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-error *ngIf="invitedBy.invalid">Please select an Invited By user.</mat-error>
+      <mat-checkbox [(ngModel)]="messBookMember.isAccepted" name="isAccepted" #isAccepted="ngModel" labelPosition="after" required> Is Accepted </mat-checkbox>
+      <mat-error *ngIf="isAccepted.invalid">Please check is Accepted</mat-error>
+      <button mat-flat-button color="accent" style="width: 100%;" type="submit">Add Member</button>
+
+      <!-- Display form values for debugging purposes -->
+      <p>MessBook:{{ messBookMember.messBook.title| json }}</p>
+      <p>Member: {{ messBookMember.member.username| json }}</p>
+      <p>InvitedBy: {{ messBookMember.invitedBy.username| json }}</p>
+      <p>IsApproved: {{ messBookMember.isAccepted| json }}</p>
+    </form>
+  </mat-card-content>
 </mat-card>
