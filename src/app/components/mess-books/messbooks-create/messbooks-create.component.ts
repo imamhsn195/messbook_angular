@@ -5,6 +5,8 @@ import { FileUploadService } from '../../../services/file-upload.service';
 import { MessBook } from '../mess-book.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { MatNativeDateModule } from '@angular/material/core'; // Import MatNativeDateModule
+
 
 @Component({
   selector: 'app-messbooks-create',
@@ -23,7 +25,9 @@ export class MessbooksCreateComponent {
   
   tableColumnHeaders: string[] = ["id", "title", 'startDate', 'endDate', 'status', 'attachment', 'actions' ]
   messbooks: MessBook[] = [];
-  messbook: MessBook = { id: 0, title: '', status: true, createdBy: 0, attachment: ''};
+  messbook: MessBook = {
+    id: 0, title: '', status: true, createdBy: 0, attachment: '',startDate: new Date('2024-04-22'), endDate: new Date('2024-05-23')
+  };
 
   ngOnInit(): void{
     this.getMessBooks();

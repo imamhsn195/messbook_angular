@@ -31,7 +31,7 @@ export class MessMembersCreateComponent implements OnInit {
     messBookMember: MessMember = { 
       id: 1, 
       messBook: { id: 1, title: 'Mess 1', startDate: new Date('2024-04-22'), endDate: new Date('2024-05-23'), attachment: 'attachment3.jpg', status: true, createdBy: 2}, 
-      member:{ id: 1, username: "imam", email: 'imam@gmail.com', phone: '123456789', password: '123', profile_picture: 'attachment3.jpg' }, 
+      members:[{ id: 1, username: "imam", email: 'imam@gmail.com', phone: '123456789', password: '123', profile_picture: 'attachment3.jpg' }], 
       invitedBy:  { id: 1, username: "imam", email: 'imam@gmail.com', phone: '123456789', password: '123', profile_picture: 'attachment3.jpg' }, 
       isAccepted: true 
     }

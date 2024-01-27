@@ -16,6 +16,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSelectModule } from '@angular/material/select';
@@ -102,6 +103,7 @@ const routes : Routes = [
         MatToolbarModule,
         MatMenuModule,
         MatDatepickerModule,
+        MatNativeDateModule,
         MatCardModule,
         MatInputModule,
         MatButtonModule,

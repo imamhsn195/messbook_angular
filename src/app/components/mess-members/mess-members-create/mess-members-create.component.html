@@ -12,7 +12,7 @@
       </mat-form-field>
       <mat-form-field style="width: 100%;">
         <mat-label>Member</mat-label>
-        <mat-select [(ngModel)]="messBookMember.member" name="messBookMember">
+        <mat-select [(ngModel)]="messBookMember.members" name="messBookMember">
           <mat-option *ngFor="let member of userList" [value]="member">
             {{ member.username }}
           </mat-option>
@@ -34,7 +34,7 @@
 
       <!-- Display form values for debugging purposes -->
       <p>MessBook:{{ messBookMember.messBook.title| json }}</p>
-      <p>Member: {{ messBookMember.member.username| json }}</p>
+      <p>Member: {{ messBookMember.members[0].username| json }}</p>
       <p>InvitedBy: {{ messBookMember.invitedBy.username| json }}</p>
       <p>IsApproved: {{ messBookMember.isAccepted| json }}</p>
     </form>
