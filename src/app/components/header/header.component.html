@@ -1,31 +1,36 @@
 <p>
     <mat-toolbar>
-        <span>Mass Book</span>
+        <span style="margin-bottom: 5px;">Mass Book</span>
     </mat-toolbar>
     <!-- <a  mat-button routerLink="/">Dashboard</a> -->
     <!-- Mess Book menu -->
-    <button mat-button [matMenuTriggerFor]="messBookrMenu">MessBooks</button>
-    <mat-menu #messBookrMenu="matMenu">
+    <a mat-button routerLink="/api/mess-books/list">MessBooks</a>
+    <!-- <button mat-button [matMenuTriggerFor]="messBookrMenu">MessBooks</button> -->
+    <!-- <mat-menu #messBookrMenu="matMenu">
         <a mat-menu-item routerLink="api/mess-books/create">add MessBook</a>
         <a mat-menu-item routerLink="api/mess-books/list">View MessBooks</a>
-    </mat-menu>
+    </mat-menu> -->
     <!-- transactions menu -->
-    <button mat-button [matMenuTriggerFor]="transactionMenu">Transactions</button>
+    
+    <a mat-button routerLink="/api/transactions/list">Transactions</a>
+    <!-- <button mat-button [matMenuTriggerFor]="transactionMenu">Transactions</button>
     <mat-menu #transactionMenu="matMenu">
         <a mat-menu-item routerLink="api/transactions/create">Add Transaction</a>
         <a mat-menu-item routerLink="api/transactions/list">View Transactions</a>
-    </mat-menu>
+    </mat-menu> -->
     <!-- users menu -->
-    <button mat-button [matMenuTriggerFor]="userMenu">Users</button>
+    <a mat-button routerLink="/api/users/list">Users</a>
+    <!-- <button mat-button [matMenuTriggerFor]="userMenu">Users</button>
     <mat-menu #userMenu="matMenu">
         <a mat-menu-item routerLink="api/users/create">Add User</a>
         <a mat-menu-item routerLink="api/users/list">View Users</a>
-    </mat-menu>
+    </mat-menu> -->
 
     <!-- users menu -->
-    <button mat-button [matMenuTriggerFor]="messMemberrMenu">Mess Members</button>
+    <a  mat-button routerLink="/api/mess-members/list">Members</a>
+    <!-- <button mat-button [matMenuTriggerFor]="messMemberrMenu">Mess Members</button>
     <mat-menu #messMemberrMenu="matMenu">
         <a mat-menu-item routerLink="api/mess-members/create">Add mess members</a>
         <a mat-menu-item routerLink="api/mess-members/list">View mess member</a>
-    </mat-menu>
+    </mat-menu> -->
 </p>

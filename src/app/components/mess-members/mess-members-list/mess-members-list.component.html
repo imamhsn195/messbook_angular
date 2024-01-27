@@ -1,5 +1,12 @@
 <mat-card>
-    <mat-card-header><h1>All Members</h1></mat-card-header>
+    <mat-card-header>
+        <h1>
+            All Members 
+            <a mat-menu-item routerLink="/api/mess-members/create">
+                <mat-icon aria-hidden="false" aria-label="add" fontIcon="add"></mat-icon>
+            </a>
+        </h1>
+    </mat-card-header>
     <mat-card-content>
         <table mat-table [dataSource]="messMembers" class="mat-elevation-z8">
             <ng-container matColumnDef="id">

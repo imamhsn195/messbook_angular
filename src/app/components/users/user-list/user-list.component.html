@@ -1,5 +1,12 @@
 <mat-card>
-    <mat-card-header><h1>All Users</h1></mat-card-header>
+    <mat-card-header>
+        <h1>
+            All Users 
+            <a mat-menu-item routerLink="/api/users/create">
+                <mat-icon aria-hidden="false" aria-label="add" fontIcon="add"></mat-icon>
+            </a>
+        </h1>
+    </mat-card-header>
     <mat-card-content>
         <table mat-table [dataSource]="users" class="mat-elevation-z8">
             <ng-container matColumnDef="id">
