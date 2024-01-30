@@ -7,14 +7,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-messbooks-update',
-  templateUrl: './messbooks-update.component.html',
-  styleUrl: './messbooks-update.component.css'
+  selector: 'app-diary-update',
+  templateUrl: './diary-update.component.html',
+  styleUrl: './diary-update.component.css'
 })
-export class MessbooksUpdateComponent {
-  
+export class DiaryUpdateComponent {
+
   constructor(
-    private messBookService: DiaryService, 
+    private messBookService: DiaryService,
     private _snackBar: MatSnackBar,
     private fileUploadService: FileUploadService,
     private route: ActivatedRoute,
@@ -26,24 +26,24 @@ export class MessbooksUpdateComponent {
     tableColumnHeaders: string[] = ["id", "title", 'startDate', 'endDate', 'status', 'attachment', 'actions' ]
     messbooks: Diary[] = [];
     diary: Diary = { title: '', startDate: new Date(), endDate: new Date(), status: true, createdBy: 0, attachment: ''};
-  
-  submit(form: NgForm) : void {    
-    if(!form.invalid){   
+
+  submit(form: NgForm) : void {
+    if(!form.invalid){
       // const maxId = this.messbooks.reduce((max, t) => (t.id > max ? t.id : max), 0);
       // this.diary.id = maxId + 1;
-      this.messBookService.addMessBook(this.diary).subscribe(() => { 
+      this.messBookService.addMessBook(this.diary).subscribe(() => {
         this.router.navigate(['/diaries'])
         this.showSnacBar('Diary added successfully!', 'OK');
       });
-    } 
+    }
   }
 
   getRecordById(id: number): void {
     this.messBookService.getMessBookById(id).subscribe((diary) => {
-      this.diary = diary;   
+      this.diary = diary;
     });
   }
-  
+
   getMessBooks(): void{
     this.messBookService.getMessBooks().subscribe((messbooks) => { this.messbooks = messbooks });
   }

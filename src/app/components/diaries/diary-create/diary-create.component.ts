@@ -9,20 +9,20 @@ import { MatNativeDateModule } from '@angular/material/core'; // Import MatNativ
 
 
 @Component({
-  selector: 'app-messbooks-create',
-  templateUrl: './messbooks-create.component.html',
-  styleUrl: './messbooks-create.component.css'
+  selector: 'app-diary-create',
+  templateUrl: './diary-create.component.html',
+  styleUrl: './diary-create.component.css'
 })
-export class MessbooksCreateComponent {
+export class DiaryCreateComponent {
 
   constructor(
-    private messBookService: DiaryService, 
+    private messBookService: DiaryService,
     private _snackBar: MatSnackBar,
     private fileUploadService: FileUploadService,
     private route: ActivatedRoute,
     private router: Router
     ){}
-  
+
   tableColumnHeaders: string[] = ["id", "title", 'startDate', 'endDate', 'status', 'attachment', 'actions' ]
   messbooks: Diary[] = [];
   diary: Diary = {
@@ -32,16 +32,16 @@ export class MessbooksCreateComponent {
   ngOnInit(): void{
     this.getMessBooks();
   }
-  
-  submit(form: NgForm) : void {   
+
+  submit(form: NgForm) : void {
     if(!form.invalid){
       // const maxId = this.messbooks.reduce((max, t) => (t.id > max ? t.id : max), 0);
       // this.diary.id = maxId + 1;
-      this.messBookService.addMessBook(this.diary).subscribe(() => { 
+      this.messBookService.addMessBook(this.diary).subscribe(() => {
         this.router.navigate(['/diaries'])
         this.showSnacBar('Diary added successfully!', 'OK');
-      });  
-    } 
+      });
+    }
   }
 
   getMessBooks(): void{

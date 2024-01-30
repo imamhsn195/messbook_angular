@@ -32,9 +32,9 @@ import { UserListComponent } from './components/users/user-list/user-list.compon
 import { TransactionsCreateComponent } from './components/transactions/transactions-create/transactions-create.component';
 import { TransactionsUpdateComponent } from './components/transactions/transactions-update/transactions-update.component';
 import { TransactoinsListComponent } from './components/transactions/transactoins-list/transactoins-list.component';
-import { MessbooksCreateComponent } from './components/diaries/diary-create/messbooks-create.component';
-import { MessbooksUpdateComponent } from './components/diaries/diary-update/messbooks-update.component';
-import { MessbooksListComponent } from './components/diaries/diary-list/messbooks-list.component';
+import { DiaryCreateComponent } from './components/diaries/diary-create/diary-create.component';
+import { DiaryUpdateComponent } from './components/diaries/diary-update/diary-update.component';
+import { DiaryListComponent } from './components/diaries/diary-list/diary-list.component';
 import { MessMembersCreateComponent } from './components/mess-members/mess-members-create/mess-members-create.component';
 import { MessMembersUpdateComponent } from './components/mess-members/mess-members-update/mess-members-update.component';
 import { MessMembersListComponent } from './components/mess-members/mess-members-list/mess-members-list.component';
@@ -54,9 +54,9 @@ const routes : Routes = [
   { path: 'users/:id', component: UserUpdateComponent },
 
   // Diary Routes
-  { path: 'diaries', component: MessbooksListComponent },
-  { path: 'diaries/create', component: MessbooksCreateComponent },
-  { path: 'diaries/:id', component: MessbooksUpdateComponent },
+  { path: 'diaries', component: DiaryListComponent },
+  { path: 'diaries/create', component: DiaryCreateComponent },
+  { path: 'diaries/:id', component: DiaryUpdateComponent },
 
     // Diary Routes
     { path: 'api/mess-members/list', component: MessMembersListComponent },
@@ -78,9 +78,9 @@ const routes : Routes = [
         TransactionsUpdateComponent,
         TransactoinsListComponent,
 
-        MessbooksCreateComponent,
-        MessbooksUpdateComponent,
-        MessbooksListComponent,
+        DiaryCreateComponent,
+        DiaryUpdateComponent,
+        DiaryListComponent,
 
         MessMembersListComponent,
         MessMembersCreateComponent,

@@ -5,18 +5,18 @@ import { Diary } from '../diary.model';
 import { FileUploadService } from '../../../services/file-upload.service';
 
 @Component({
-  selector: 'app-messbooks-list',
-  templateUrl: './messbooks-list.component.html',
-  styleUrl: './messbooks-list.component.css'
+  selector: 'app-diary-list',
+  templateUrl: './diary-list.component.html',
+  styleUrl: './diary-list.component.css'
 })
-export class MessbooksListComponent {
+export class DiaryListComponent {
 
   constructor(
-    private messBookService: DiaryService, 
+    private messBookService: DiaryService,
     private _snackBar: MatSnackBar,
     private fileUploadService: FileUploadService
     ){}
-  
+
   tableColumnHeaders: string[] = ["id", "title", 'startDate', 'endDate', 'status', 'attachment', 'actions' ]
   isNew = true;
   messbooks: Diary[] = [];
@@ -25,18 +25,18 @@ export class MessbooksListComponent {
   ngOnInit(): void{
     this.getMessBooks();
   }
-  
+
   getMessBooks(): void{
     this.messBookService.getMessBooks().subscribe((messbooks) => { this.messbooks = messbooks });
   }
 
   getMessBookById(id: number): void {
     this.messBookService.getMessBookById(id).subscribe((diary) => {
-      this.diary = diary;      
+      this.diary = diary;
       this.isNew = false;
     });
   }
-  
+
   deleteMessBook(id: number): void{
     this.messBookService.deleteMessBook(id).subscribe(() => {
       this.showSnacBar('Diary deleted successfully!', "OK")
