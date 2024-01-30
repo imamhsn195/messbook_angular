@@ -20,14 +20,13 @@ export class UserUpdateComponent {
     private router: Router
   ) { }
   ngOnInit(): void {
-    this.getUserById(Number(this.route.snapshot.paramMap.get('id')))
+    this.getUserById(this.route.snapshot.paramMap.get('id')!)
   }
-  user_id: number = 0;
-  user: User = { id: "asefasf", username: '', email: '', phone: '', password: '', profile_picture: '' };
+  user: User = { _id: '', username: '', email: '', phone: '', password: '', profile_picture: '' };
   submit(form: NgForm): void {
     if(!form.invalid){
       this.userService.UpdateUser(this.user).subscribe(() => {
-        this.router.navigate(['/api/users/list'])
+        this.router.navigate(['/users'])
         this.showSnacBar('User updated succesfully!', 'OK');
       });
     }
@@ -42,8 +41,8 @@ export class UserUpdateComponent {
       this.user.profile_picture = this.fileUploadService.extractFileName(selectedFile);
     }
   }
-  getUserById(id:number): void {
-    this.userService.getUserById(id).subscribe((user) => {
+  getUserById( _id:String ): void {
+    this.userService.getUserById(_id).subscribe((user) => {
       this.user = user;
     });
   }

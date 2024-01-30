@@ -30,7 +30,7 @@ export class UserCreateComponent {
         // const maxId = this.users.reduce((max, t) => (t.id > max ? t.id : max), 0);
         // this.user.id = maxId + 1;
         this.userService.addUser(this.user).subscribe(() => {
-          this.router.navigate(['/api/users/list']); 
+          this.router.navigate(['/users']); 
           this.showSnacBar('User added successfully!', 'OK');
         });
       }    

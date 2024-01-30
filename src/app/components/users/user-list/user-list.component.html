@@ -2,16 +2,20 @@
     <mat-card-header>
         <h1>
             All Users 
-            <a mat-menu-item routerLink="/api/users/create">
+            <a mat-menu-item routerLink="/users/create">
                 <mat-icon aria-hidden="false" aria-label="add" fontIcon="add"></mat-icon>
             </a>
         </h1>
     </mat-card-header>
     <mat-card-content>
         <table mat-table [dataSource]="users" class="mat-elevation-z8">
-            <ng-container matColumnDef="id">
+            <ng-container matColumnDef="serialNumber">
                 <th mat-header-cell *matHeaderCellDef> No. </th>
-                <td mat-cell *matCellDef="let element"> {{ element.id }} </td>
+                <td mat-cell *matCellDef="let i = index"> {{ i + 1 }} </td>
+            </ng-container>
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> UserId</th>
+                <td mat-cell *matCellDef="let element"> {{ element._id }} </td>
             </ng-container>
             <ng-container matColumnDef="username">
                 <th mat-header-cell *matHeaderCellDef> Username </th>
@@ -32,8 +36,8 @@
             <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef> Actions </th>
                 <td mat-cell *matCellDef="let element"> 
-                    <a mat-button color="primary" routerLink="/api/users/update/{{element.id}}">Update</a>
-                    <button mat-button color="warn" (click)="deleteUser(element.id)">Delete</button>
+                    <a mat-button color="primary" routerLink="/users/{{element._id}}">Update</a>
+                    <button mat-button color="warn" (click)="deleteUser(element._id)">Delete</button>
                 </td>
             </ng-container>
             <tr mat-header-row *matHeaderRowDef="tableColumnHeaders"></tr>

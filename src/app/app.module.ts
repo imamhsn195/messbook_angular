@@ -49,9 +49,9 @@ const routes : Routes = [
   { path: 'api/transactions/update/:id', component: TransactionsUpdateComponent },
 
   // Users Routes
-  { path: 'api/users/list', component: UserListComponent },
-  { path: 'api/users/create', component: UserCreateComponent },
-  { path: 'api/users/:id', component: UserUpdateComponent },
+  { path: 'users', component: UserListComponent },
+  { path: 'users/create', component: UserCreateComponent },
+  { path: 'users/:id', component: UserUpdateComponent },
 
   // MessBook Routes
   { path: 'api/mess-books/list', component: MessbooksListComponent },

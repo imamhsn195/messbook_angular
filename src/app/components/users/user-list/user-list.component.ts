@@ -10,7 +10,7 @@ import { UserService } from '../users.service';
   styleUrl: './user-list.component.css'
 })
 export class UserListComponent {
-  tableColumnHeaders: string[] = ["id", "username", 'email', 'phone', 'profile_picture', 'actions' ]
+  tableColumnHeaders: string[] = ["serialNumber", "id", "username", 'email', 'phone', 'profile_picture', 'actions' ]
   users: User[] = [];
 
   constructor(
@@ -28,8 +28,8 @@ export class UserListComponent {
       this.users = users });
   }
 
-  deleteUser(id: number): void{
-    this.userService.deleteUser(id).subscribe(() => {
+  deleteUser(_id: String): void{
+    this.userService.deleteUser(_id).subscribe(() => {
       this.showSnacBar('User deleted successfully!', "OK")
       this.getUsers();
     })
