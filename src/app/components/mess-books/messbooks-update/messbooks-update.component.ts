@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Diary } from '../mess-book.model';
 import { FileUploadService } from '../../../services/file-upload.service';
-import { MessBookService } from '../mess-book.service';
+import { DiaryService } from '../mess-book.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
@@ -14,7 +14,7 @@ import { NgForm } from '@angular/forms';
 export class MessbooksUpdateComponent {
   
   constructor(
-    private messBookService: MessBookService, 
+    private messBookService: DiaryService, 
     private _snackBar: MatSnackBar,
     private fileUploadService: FileUploadService,
     private route: ActivatedRoute,

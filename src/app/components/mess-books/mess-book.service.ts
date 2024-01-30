@@ -6,7 +6,7 @@ import { Diary } from './mess-book.model';
 @Injectable({
     providedIn: 'root'
   })
-export class MessBookService{
+export class DiaryService{
   constructor(private http: HttpClient) {}
   private apiUrl = 'api';
 

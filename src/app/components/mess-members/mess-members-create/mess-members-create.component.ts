@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { UserService } from '../../users/users.service';
 import { User } from '../../users/users.model';
-import { MessBookService } from '../../mess-books/mess-book.service';
+import { DiaryService } from '../../mess-books/mess-book.service';
 import { Diary } from '../../mess-books/mess-book.model';
 import { FileUploadService } from '../../../services/file-upload.service';
 import { MessMember } from '../mess-member';
@@ -21,7 +21,7 @@ export class MessMembersCreateComponent implements OnInit {
     private userService: UserService, 
     private router: Router,
     private _snackBar: MatSnackBar,
-    private messBookService: MessBookService,
+    private messBookService: DiaryService,
     private messBookMemberService: MessMemberService,
     private fileUploadService: FileUploadService    ){}
 

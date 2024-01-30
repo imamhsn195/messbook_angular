@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MessBookService } from '../mess-book.service';
+import { DiaryService } from '../mess-book.service';
 import { FileUploadService } from '../../../services/file-upload.service';
 import { Diary } from '../mess-book.model';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -16,7 +16,7 @@ import { MatNativeDateModule } from '@angular/material/core'; // Import MatNativ
 export class MessbooksCreateComponent {
 
   constructor(
-    private messBookService: MessBookService, 
+    private messBookService: DiaryService, 
     private _snackBar: MatSnackBar,
     private fileUploadService: FileUploadService,
     private route: ActivatedRoute,
