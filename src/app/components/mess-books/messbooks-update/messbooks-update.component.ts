@@ -25,12 +25,12 @@ export class MessbooksUpdateComponent {
     }
     tableColumnHeaders: string[] = ["id", "title", 'startDate', 'endDate', 'status', 'attachment', 'actions' ]
     messbooks: MessBook[] = [];
-    messbook: MessBook = { id: 0, title: '', startDate: new Date(), endDate: new Date(), status: true, createdBy: 0, attachment: ''};
+    messbook: MessBook = { title: '', startDate: new Date(), endDate: new Date(), status: true, createdBy: 0, attachment: ''};
   
   submit(form: NgForm) : void {    
     if(!form.invalid){   
-      const maxId = this.messbooks.reduce((max, t) => (t.id > max ? t.id : max), 0);
-      this.messbook.id = maxId + 1;
+      // const maxId = this.messbooks.reduce((max, t) => (t.id > max ? t.id : max), 0);
+      // this.messbook.id = maxId + 1;
       this.messBookService.addMessBook(this.messbook).subscribe(() => { 
         this.router.navigate(['/api/mess-books/list'])
         this.showSnacBar('MessBook added successfully!', 'OK');

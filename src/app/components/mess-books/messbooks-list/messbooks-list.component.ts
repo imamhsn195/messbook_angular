@@ -20,7 +20,7 @@ export class MessbooksListComponent {
   tableColumnHeaders: string[] = ["id", "title", 'startDate', 'endDate', 'status', 'attachment', 'actions' ]
   isNew = true;
   messbooks: MessBook[] = [];
-  messbook: MessBook = { id: 0, title: '', startDate: new Date(), endDate: new Date(), status: true, createdBy: 0, attachment: ''};
+  messbook: MessBook = { title: '', startDate: new Date(), endDate: new Date(), status: true, createdBy: 0, attachment: ''};
 
   ngOnInit(): void{
     this.getMessBooks();
@@ -41,7 +41,7 @@ export class MessbooksListComponent {
     this.messBookService.deleteMessBook(id).subscribe(() => {
       this.showSnacBar('MessBook deleted successfully!', "OK")
       this.getMessBooks();
-      this.messbook = { id: 0, title: '', startDate: new Date(), endDate: new Date(), status: true, createdBy: 0, attachment: ''};
+      this.messbook = { title: '', startDate: new Date(), endDate: new Date(), status: true, createdBy: 0, attachment: ''};
       this.isNew = true;
     })
   }

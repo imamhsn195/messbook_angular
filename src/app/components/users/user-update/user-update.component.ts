@@ -23,7 +23,7 @@ export class UserUpdateComponent {
     this.getUserById(Number(this.route.snapshot.paramMap.get('id')))
   }
   user_id: number = 0;
-  user: User = { id: 0, username: '', email: '', phone: '', password: '', profile_picture: '' };
+  user: User = { id: "asefasf", username: '', email: '', phone: '', password: '', profile_picture: '' };
   submit(form: NgForm): void {
     if(!form.invalid){
       this.userService.UpdateUser(this.user).subscribe(() => {

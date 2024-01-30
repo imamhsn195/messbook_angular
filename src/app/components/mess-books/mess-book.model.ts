@@ -1,5 +1,5 @@
 export interface MessBook{
-    id: number,
+    id?: string,
     title: string,
     startDate?: Date,
     endDate?: Date,

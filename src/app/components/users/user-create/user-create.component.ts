@@ -24,11 +24,11 @@ export class UserCreateComponent {
   }
  
   users: User[] = [];
-  user: User = { id: 0, username: '', email: '', phone: '', password: '', profile_picture: '' };
+  user: User = { username: '', email: '', phone: '', password: '', profile_picture: '' };
   addUser(form: NgForm) : void {    
     if(!form.invalid){
-        const maxId = this.users.reduce((max, t) => (t.id > max ? t.id : max), 0);
-        this.user.id = maxId + 1;
+        // const maxId = this.users.reduce((max, t) => (t.id > max ? t.id : max), 0);
+        // this.user.id = maxId + 1;
         this.userService.addUser(this.user).subscribe(() => {
           this.router.navigate(['/api/users/list']); 
           this.showSnacBar('User added successfully!', 'OK');
