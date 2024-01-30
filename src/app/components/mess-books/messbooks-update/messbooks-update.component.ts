@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MessBook } from '../mess-book.model';
+import { Diary } from '../mess-book.model';
 import { FileUploadService } from '../../../services/file-upload.service';
 import { MessBookService } from '../mess-book.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -24,8 +24,8 @@ export class MessbooksUpdateComponent {
       this.getRecordById(Number(this.route.snapshot.paramMap.get('id')))
     }
     tableColumnHeaders: string[] = ["id", "title", 'startDate', 'endDate', 'status', 'attachment', 'actions' ]
-    messbooks: MessBook[] = [];
-    messbook: MessBook = { title: '', startDate: new Date(), endDate: new Date(), status: true, createdBy: 0, attachment: ''};
+    messbooks: Diary[] = [];
+    messbook: Diary = { title: '', startDate: new Date(), endDate: new Date(), status: true, createdBy: 0, attachment: ''};
   
   submit(form: NgForm) : void {    
     if(!form.invalid){   
@@ -33,7 +33,7 @@ export class MessbooksUpdateComponent {
       // this.messbook.id = maxId + 1;
       this.messBookService.addMessBook(this.messbook).subscribe(() => { 
         this.router.navigate(['/api/mess-books/list'])
-        this.showSnacBar('MessBook added successfully!', 'OK');
+        this.showSnacBar('Diary added successfully!', 'OK');
       });
     } 
   }

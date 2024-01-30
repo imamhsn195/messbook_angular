@@ -53,12 +53,12 @@ const routes : Routes = [
   { path: 'users/create', component: UserCreateComponent },
   { path: 'users/:id', component: UserUpdateComponent },
 
-  // MessBook Routes
+  // Diary Routes
   { path: 'api/mess-books/list', component: MessbooksListComponent },
   { path: 'api/mess-books/create', component: MessbooksCreateComponent },
   { path: 'api/mess-books/update/:id', component: MessbooksUpdateComponent },
 
-    // MessBook Routes
+    // Diary Routes
     { path: 'api/mess-members/list', component: MessMembersListComponent },
     { path: 'api/mess-members/create', component: MessMembersCreateComponent },
     { path: 'api/mess-members/update/:id', component: MessMembersUpdateComponent },
@@ -112,7 +112,7 @@ const routes : Routes = [
         MatDividerModule,
         MatSelectModule,
         // In-memory Web API for demo purposes
-        // HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService),
+        HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService),
     ]
 })
 export class AppModule { }

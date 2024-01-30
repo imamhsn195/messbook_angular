@@ -1,4 +1,4 @@
-export interface MessBook{
+export interface Diary{
     id?: string,
     title: string,
     startDate?: Date,

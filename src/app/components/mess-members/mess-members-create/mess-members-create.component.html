@@ -1,5 +1,5 @@
 <mat-card>
-  <mat-card-header>Add MessBook Member</mat-card-header>
+  <mat-card-header>Add Diary Member</mat-card-header>
   <mat-card-content>
     <form (submit)="submit(form)" #form="ngForm">
       <mat-form-field style="width: 100%;">
@@ -33,7 +33,7 @@
       <button mat-flat-button color="accent" style="width: 100%;" type="submit">Add Member</button>
 
       <!-- Display form values for debugging purposes -->
-      <p>MessBook:{{ messBookMember.messBook.title| json }}</p>
+      <p>Diary:{{ messBookMember.messBook.title| json }}</p>
       <p>Member: {{ messBookMember.members[0].username| json }}</p>
       <p>InvitedBy: {{ messBookMember.invitedBy.username| json }}</p>
       <p>IsApproved: {{ messBookMember.isAccepted| json }}</p>

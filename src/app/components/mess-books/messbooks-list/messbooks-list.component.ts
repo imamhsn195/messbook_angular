@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MessBookService } from '../mess-book.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MessBook } from '../mess-book.model';
+import { Diary } from '../mess-book.model';
 import { FileUploadService } from '../../../services/file-upload.service';
 
 @Component({
@@ -19,8 +19,8 @@ export class MessbooksListComponent {
   
   tableColumnHeaders: string[] = ["id", "title", 'startDate', 'endDate', 'status', 'attachment', 'actions' ]
   isNew = true;
-  messbooks: MessBook[] = [];
-  messbook: MessBook = { title: '', startDate: new Date(), endDate: new Date(), status: true, createdBy: 0, attachment: ''};
+  messbooks: Diary[] = [];
+  messbook: Diary = { title: '', startDate: new Date(), endDate: new Date(), status: true, createdBy: 0, attachment: ''};
 
   ngOnInit(): void{
     this.getMessBooks();
@@ -39,7 +39,7 @@ export class MessbooksListComponent {
   
   deleteMessBook(id: number): void{
     this.messBookService.deleteMessBook(id).subscribe(() => {
-      this.showSnacBar('MessBook deleted successfully!', "OK")
+      this.showSnacBar('Diary deleted successfully!', "OK")
       this.getMessBooks();
       this.messbook = { title: '', startDate: new Date(), endDate: new Date(), status: true, createdBy: 0, attachment: ''};
       this.isNew = true;

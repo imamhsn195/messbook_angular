@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { UserService } from '../../users/users.service';
 import { User } from '../../users/users.model';
 import { MessBookService } from '../../mess-books/mess-book.service';
-import { MessBook } from '../../mess-books/mess-book.model';
+import { Diary } from '../../mess-books/mess-book.model';
 import { FileUploadService } from '../../../services/file-upload.service';
 import { MessMember } from '../mess-member';
 import { MessMemberService } from '../mess-member.service';
@@ -25,7 +25,7 @@ export class MessMembersCreateComponent implements OnInit {
     private messBookMemberService: MessMemberService,
     private fileUploadService: FileUploadService    ){}
 
-    messbooksList: MessBook[] = [];
+    messbooksList: Diary[] = [];
     userList: User[] = [];
     messBookMembers: MessMember[] = [];
     messBookMember: MessMember = { 

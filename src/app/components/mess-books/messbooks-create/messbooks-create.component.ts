@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MessBookService } from '../mess-book.service';
 import { FileUploadService } from '../../../services/file-upload.service';
-import { MessBook } from '../mess-book.model';
+import { Diary } from '../mess-book.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core'; // Import MatNativeDateModule
@@ -24,8 +24,8 @@ export class MessbooksCreateComponent {
     ){}
   
   tableColumnHeaders: string[] = ["id", "title", 'startDate', 'endDate', 'status', 'attachment', 'actions' ]
-  messbooks: MessBook[] = [];
-  messbook: MessBook = {
+  messbooks: Diary[] = [];
+  messbook: Diary = {
     title: '', status: true, createdBy: 0, attachment: '',startDate: new Date('2024-04-22'), endDate: new Date('2024-05-23')
   };
 
@@ -39,7 +39,7 @@ export class MessbooksCreateComponent {
       // this.messbook.id = maxId + 1;
       this.messBookService.addMessBook(this.messbook).subscribe(() => { 
         this.router.navigate(['/api/mess-books/list'])
-        this.showSnacBar('MessBook added successfully!', 'OK');
+        this.showSnacBar('Diary added successfully!', 'OK');
       });  
     } 
   }
