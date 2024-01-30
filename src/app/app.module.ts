@@ -32,9 +32,9 @@ import { UserListComponent } from './components/users/user-list/user-list.compon
 import { TransactionsCreateComponent } from './components/transactions/transactions-create/transactions-create.component';
 import { TransactionsUpdateComponent } from './components/transactions/transactions-update/transactions-update.component';
 import { TransactoinsListComponent } from './components/transactions/transactoins-list/transactoins-list.component';
-import { MessbooksCreateComponent } from './components/mess-books/diary-create/messbooks-create.component';
-import { MessbooksUpdateComponent } from './components/mess-books/diary-update/messbooks-update.component';
-import { MessbooksListComponent } from './components/mess-books/diary-list/messbooks-list.component';
+import { MessbooksCreateComponent } from './components/diaries/diary-create/messbooks-create.component';
+import { MessbooksUpdateComponent } from './components/diaries/diary-update/messbooks-update.component';
+import { MessbooksListComponent } from './components/diaries/diary-list/messbooks-list.component';
 import { MessMembersCreateComponent } from './components/mess-members/mess-members-create/mess-members-create.component';
 import { MessMembersUpdateComponent } from './components/mess-members/mess-members-update/mess-members-update.component';
 import { MessMembersListComponent } from './components/mess-members/mess-members-list/mess-members-list.component';

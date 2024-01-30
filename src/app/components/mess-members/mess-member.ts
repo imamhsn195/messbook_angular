@@ -1,4 +1,4 @@
-import { Diary } from "../mess-books/diary.model";
+import { Diary } from "../diaries/diary.model";
 import { User } from "../users/users.model";
 export interface MessMember {
  id: number;
