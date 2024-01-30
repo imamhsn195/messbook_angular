@@ -8,10 +8,10 @@ import { User } from './users.model';
   })
 export class UserService{
   constructor(private http: HttpClient) {}
-  private apiUrl = 'api';
+  private apiUrl = 'http://localhost:3000/api';
 
   addUser(user: User): Observable<User> {
-    return this.http.post<User>(`${this.apiUrl}/users`, user);
+    return this.http.post<User>(`${this.apiUrl}/users/create`, user);
   }
 
   getUserById(id: number): Observable<User>{

@@ -51,7 +51,7 @@ const routes : Routes = [
   // Users Routes
   { path: 'api/users/list', component: UserListComponent },
   { path: 'api/users/create', component: UserCreateComponent },
-  { path: 'api/users/update/:id', component: UserUpdateComponent },
+  { path: 'api/users/:id', component: UserUpdateComponent },
 
   // MessBook Routes
   { path: 'api/mess-books/list', component: MessbooksListComponent },
@@ -112,7 +112,7 @@ const routes : Routes = [
         MatDividerModule,
         MatSelectModule,
         // In-memory Web API for demo purposes
-        HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService),
+        // HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService),
     ]
 })
 export class AppModule { }
