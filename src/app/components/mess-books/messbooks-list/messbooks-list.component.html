@@ -2,7 +2,7 @@
     <mat-card-header>
         <h1>
             All Messbooks 
-            <a mat-menu-item routerLink="/api/mess-books/create">
+            <a mat-menu-item routerLink="/diaries/create">
                 <mat-icon aria-hidden="false" aria-label="add" fontIcon="add"></mat-icon>
             </a>
         </h1>
@@ -40,7 +40,7 @@
             <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef> Actions </th>
                 <td mat-cell *matCellDef="let element"> 
-                    <a mat-button color="primary" routerLink="/api/mess-books/update/{{element.id}}">Update</a> &nbsp;
+                    <a mat-button color="primary" routerLink="/diaries/{{element.id}}">Update</a> &nbsp;
                     <button mat-button color="warn" (click)="deleteMessBook(element.id)">Delete</button>
                 </td>
             </ng-container>

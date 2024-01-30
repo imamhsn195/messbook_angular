@@ -54,9 +54,9 @@ const routes : Routes = [
   { path: 'users/:id', component: UserUpdateComponent },
 
   // Diary Routes
-  { path: 'api/mess-books/list', component: MessbooksListComponent },
-  { path: 'api/mess-books/create', component: MessbooksCreateComponent },
-  { path: 'api/mess-books/update/:id', component: MessbooksUpdateComponent },
+  { path: 'diaries', component: MessbooksListComponent },
+  { path: 'diaries/create', component: MessbooksCreateComponent },
+  { path: 'diaries/:id', component: MessbooksUpdateComponent },
 
     // Diary Routes
     { path: 'api/mess-members/list', component: MessMembersListComponent },

@@ -32,7 +32,7 @@ export class MessbooksUpdateComponent {
       // const maxId = this.messbooks.reduce((max, t) => (t.id > max ? t.id : max), 0);
       // this.messbook.id = maxId + 1;
       this.messBookService.addMessBook(this.messbook).subscribe(() => { 
-        this.router.navigate(['/api/mess-books/list'])
+        this.router.navigate(['/diaries'])
         this.showSnacBar('Diary added successfully!', 'OK');
       });
     } 

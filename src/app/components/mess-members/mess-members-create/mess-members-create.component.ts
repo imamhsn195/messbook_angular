@@ -46,7 +46,7 @@ export class MessMembersCreateComponent implements OnInit {
       const maxId = this.messBookMembers.reduce((max, t) => (t.id > max ? t.id : max), 0);
       this.messBookMember.id = maxId + 1;    
       this.messBookMemberService.addMember(this.messBookMember).subscribe((messMember) => {
-        this.router.navigate(['/api/mess-books/list'])
+        this.router.navigate(['/diaries'])
         this.showSnacBar('Mess member added successfully!', 'OK');
         console.log(messMember);
       });
