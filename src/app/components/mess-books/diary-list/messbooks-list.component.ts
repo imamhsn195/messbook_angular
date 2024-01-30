@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { DiaryService } from '../mess-book.service';
+import { DiaryService } from '../diary.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Diary } from '../mess-book.model';
+import { Diary } from '../diary.model';
 import { FileUploadService } from '../../../services/file-upload.service';
 
 @Component({

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { DiaryService } from '../mess-book.service';
+import { DiaryService } from '../diary.service';
 import { FileUploadService } from '../../../services/file-upload.service';
-import { Diary } from '../mess-book.model';
+import { Diary } from '../diary.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core'; // Import MatNativeDateModule
