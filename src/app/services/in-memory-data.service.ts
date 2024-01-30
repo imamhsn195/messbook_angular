@@ -27,7 +27,7 @@ export class InMemoryDataService implements InMemoryDbService {
     const messbookMembers = [
       { 
         id: 1, 
-        messbook: { id: 1, title: 'Mess 1', startDate: new Date('2024-04-22'), endDate: new Date('2024-05-23'), attachment: 'attachment3.jpg', status: true }, 
+        diary: { id: 1, title: 'Mess 1', startDate: new Date('2024-04-22'), endDate: new Date('2024-05-23'), attachment: 'attachment3.jpg', status: true }, 
         members: [
           { id: 3, username: "jone", email: 'jone@gmail.com', phone: '89794654', password: '123', profile_picture: 'attachment3.jpg' },
           { id: 1, username: "imam", email: 'imam@gmail.com', phone: '123456789', password: '123', profile_picture: 'attachment3.jpg' }
@@ -37,7 +37,7 @@ export class InMemoryDataService implements InMemoryDbService {
       },
       { 
         id: 2, 
-        messbook: { id: 1, title: 'Mess 1', startDate: new Date('2024-04-22'), endDate: new Date('2024-05-23'), attachment: 'attachment3.jpg', status: true }, 
+        diary: { id: 1, title: 'Mess 1', startDate: new Date('2024-04-22'), endDate: new Date('2024-05-23'), attachment: 'attachment3.jpg', status: true }, 
         members: [
           { id: 1, username: "imam", email: 'imam@gmail.com', phone: '123456789', password: '123', profile_picture: 'attachment3.jpg' },
           { id: 3, username: "jone", email: 'jone@gmail.com', phone: '89794654', password: '123', profile_picture: 'attachment3.jpg' }
@@ -46,7 +46,7 @@ export class InMemoryDataService implements InMemoryDbService {
         isAccepted: false 
       },
       { id: 3, 
-        messbook: { id: 1, title: 'Mess 1', startDate: new Date('2024-04-22'), endDate: new Date('2024-05-23'), attachment: 'attachment3.jpg', status: true }, 
+        diary: { id: 1, title: 'Mess 1', startDate: new Date('2024-04-22'), endDate: new Date('2024-05-23'), attachment: 'attachment3.jpg', status: true }, 
         members: [{ id: 1, username: "imam", email: 'imam@gmail.com', phone: '123456789', password: '123', profile_picture: 'attachment3.jpg' }], 
         invidedBy: { id: 1, username: "imam", email: 'imam@gmail.com', phone: '123456789', password: '123', profile_picture: 'attachment3.jpg' }, 
         isAccepted: true 

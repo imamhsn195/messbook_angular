@@ -20,7 +20,7 @@ export class MessbooksListComponent {
   tableColumnHeaders: string[] = ["id", "title", 'startDate', 'endDate', 'status', 'attachment', 'actions' ]
   isNew = true;
   messbooks: Diary[] = [];
-  messbook: Diary = { title: '', startDate: new Date(), endDate: new Date(), status: true, createdBy: 0, attachment: ''};
+  diary: Diary = { title: '', startDate: new Date(), endDate: new Date(), status: true, createdBy: 0, attachment: ''};
 
   ngOnInit(): void{
     this.getMessBooks();
@@ -31,8 +31,8 @@ export class MessbooksListComponent {
   }
 
   getMessBookById(id: number): void {
-    this.messBookService.getMessBookById(id).subscribe((messbook) => {
-      this.messbook = messbook;      
+    this.messBookService.getMessBookById(id).subscribe((diary) => {
+      this.diary = diary;      
       this.isNew = false;
     });
   }
@@ -41,7 +41,7 @@ export class MessbooksListComponent {
     this.messBookService.deleteMessBook(id).subscribe(() => {
       this.showSnacBar('Diary deleted successfully!', "OK")
       this.getMessBooks();
-      this.messbook = { title: '', startDate: new Date(), endDate: new Date(), status: true, createdBy: 0, attachment: ''};
+      this.diary = { title: '', startDate: new Date(), endDate: new Date(), status: true, createdBy: 0, attachment: ''};
       this.isNew = true;
     })
   }
@@ -53,7 +53,7 @@ export class MessbooksListComponent {
   onFileChange(event: any): void {
     const selectedFile = this.fileUploadService.handleFileInput(event);
     if (selectedFile) {
-      this.messbook.attachment = this.fileUploadService.extractFileName(selectedFile);
+      this.diary.attachment = this.fileUploadService.extractFileName(selectedFile);
     }
   }
 }

@@ -25,7 +25,7 @@ export class MessbooksCreateComponent {
   
   tableColumnHeaders: string[] = ["id", "title", 'startDate', 'endDate', 'status', 'attachment', 'actions' ]
   messbooks: Diary[] = [];
-  messbook: Diary = {
+  diary: Diary = {
     title: '', status: true, createdBy: 0, attachment: '',startDate: new Date('2024-04-22'), endDate: new Date('2024-05-23')
   };
 
@@ -36,8 +36,8 @@ export class MessbooksCreateComponent {
   submit(form: NgForm) : void {   
     if(!form.invalid){
       // const maxId = this.messbooks.reduce((max, t) => (t.id > max ? t.id : max), 0);
-      // this.messbook.id = maxId + 1;
-      this.messBookService.addMessBook(this.messbook).subscribe(() => { 
+      // this.diary.id = maxId + 1;
+      this.messBookService.addMessBook(this.diary).subscribe(() => { 
         this.router.navigate(['/diaries'])
         this.showSnacBar('Diary added successfully!', 'OK');
       });  
@@ -54,7 +54,7 @@ export class MessbooksCreateComponent {
   onFileChange(event: any): void {
     const selectedFile = this.fileUploadService.handleFileInput(event);
     if (selectedFile) {
-      this.messbook.attachment = this.fileUploadService.extractFileName(selectedFile);
+      this.diary.attachment = this.fileUploadService.extractFileName(selectedFile);
     }
   }
 }

@@ -9,7 +9,7 @@ import { MessMemberService } from '../mess-member.service';
   styleUrl: './mess-members-list.component.css'
 })
 export class MessMembersListComponent {
-  tableColumnHeaders: string[] = [ "id",'messbook','members','invidedBy','isAccepted','actions' ];
+  tableColumnHeaders: string[] = [ "id",'diary','members','invidedBy','isAccepted','actions' ];
   messMembers: MessMember[] = [];
 
   constructor(

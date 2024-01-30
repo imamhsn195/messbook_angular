@@ -3,7 +3,7 @@
   <mat-card-content>
     <form (submit)="submit(form)" #form="ngForm">
       <mat-form-field style="width: 100%;">
-        <mat-label>MessBooks</mat-label>
+        <mat-label>Diaries</mat-label>
         <mat-select [(ngModel)]="messBookMember.messBook" name="messBook">
           <mat-option *ngFor="let messBook of messbooksList" [value]="messBook">
             {{ messBook.title }}
