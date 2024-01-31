@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { SnackbarService } from '../../services/snackbar.service';
 import { Subscription } from 'rxjs';
+import { SnackbarService } from '../../../services/snackbar.service';
 
 @Component({
   selector: 'app-snackbar',

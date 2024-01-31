@@ -24,8 +24,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 
 // Components
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { HeaderComponent } from './components/common/header/header.component';
+import { DashboardComponent } from './components/common/dashboard/dashboard.component';
 import { UserCreateComponent } from './components/users/user-create/user-create.component';
 import { UserUpdateComponent } from './components/users/user-update/user-update.component';
 import { UserListComponent } from './components/users/user-list/user-list.component';
@@ -38,8 +38,8 @@ import { DiaryListComponent } from './components/diaries/diary-list/diary-list.c
 import { MessMembersCreateComponent } from './components/mess-members/mess-members-create/mess-members-create.component';
 import { MessMembersUpdateComponent } from './components/mess-members/mess-members-update/mess-members-update.component';
 import { MessMembersListComponent } from './components/mess-members/mess-members-list/mess-members-list.component';
-import { SnackbarComponent } from './components/snackbar/snackbar.component';
-import { DeleteConfirmationComponent } from './components/delete-confirmation/delete-confirmation.component';
+import { SnackbarComponent } from './components/common/snackbar/snackbar.component';
+import { DeleteConfirmationComponent } from './components/common/delete-confirmation/delete-confirmation.component';
 import { MatDialogModule } from '@angular/material/dialog';
 
 const routes : Routes = [
