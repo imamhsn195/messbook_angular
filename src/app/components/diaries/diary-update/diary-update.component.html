@@ -1,5 +1,5 @@
 <mat-card> 
-    <mat-card-header><h1>Add diary</h1></mat-card-header>
+    <mat-card-header><h1>Update diary</h1></mat-card-header>
     <mat-card-content>
         <form (submit)="submit(form)" #form="ngForm">
             <mat-form-field style="width: 100%;">
@@ -9,17 +9,17 @@
             </mat-form-field>
             <mat-form-field  style="width: 100%;">
                 <mat-label>Choose a Start date</mat-label>
-                <input matInput [matDatepicker]="picker" [(ngModel)] = "diary.startDate" name="startDate" #startDate = "ngModel" required>
+                <input matInput [matDatepicker]="start_date" [(ngModel)] = "diary.start_date" name="startDate" #startDate = "ngModel" required>
                 <mat-error *ngIf="startDate.invalid">Please select a start date.</mat-error>
-                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
+                <mat-datepicker-toggle matIconSuffix [for]="start_date"></mat-datepicker-toggle>
+                <mat-datepicker #start_date></mat-datepicker>
             </mat-form-field>
             <mat-form-field  style="width: 100%;">
                 <mat-label>Choose a End date</mat-label>
-                <input matInput [matDatepicker]="picker" [(ngModel)] = "diary.endDate" name="endDate" #endDate = "ngModel" required>
+                <input matInput [matDatepicker]="end_date" [(ngModel)] = "diary.end_date" name="endDate" #endDate = "ngModel" required>
                 <mat-error *ngIf="endDate.invalid">Please select a end date.</mat-error>
-                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
+                <mat-datepicker-toggle matIconSuffix [for]="end_date"></mat-datepicker-toggle>
+                <mat-datepicker #end_date></mat-datepicker>
             </mat-form-field>
                 <button type="button" color="primary" style="width: 100%; margin-bottom: 0.5em;" mat-flat-button (click)="fileInput.click()">Attachment (Optional):</button>
                 <!-- <input hidden  #fileInput type="file"  id="attachment" [(ngModel)]="diary.attachment" name="attachment"> -->

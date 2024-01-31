@@ -17,10 +17,10 @@ export class DiaryListComponent {
     private fileUploadService: FileUploadService
     ){}
 
-  tableColumnHeaders: string[] = ["id", "title", 'startDate', 'endDate', 'status', 'attachment', 'actions' ]
+  tableColumnHeaders: string[] = [ "serialNumber" , "id", "title", 'startDate', 'endDate', 'createdBy', 'status', 'attachment', 'actions' ]
   isNew = true;
   messbooks: Diary[] = [];
-  diary: Diary = { title: '', startDate: new Date(), endDate: new Date(), status: true, createdBy: 0, attachment: ''};
+  diary: Diary = { title: '', start_date: new Date(), end_date: new Date(), status: true, creator: '', attachment: ''};
 
   ngOnInit(): void{
     this.getMessBooks();
@@ -30,7 +30,7 @@ export class DiaryListComponent {
     this.messBookService.getMessBooks().subscribe((messbooks) => { this.messbooks = messbooks });
   }
 
-  getMessBookById(id: number): void {
+  getMessBookById(id: String): void {
     this.messBookService.getMessBookById(id).subscribe((diary) => {
       this.diary = diary;
       this.isNew = false;
@@ -41,7 +41,7 @@ export class DiaryListComponent {
     this.messBookService.deleteMessBook(id).subscribe(() => {
       this.showSnacBar('Diary deleted successfully!', "OK")
       this.getMessBooks();
-      this.diary = { title: '', startDate: new Date(), endDate: new Date(), status: true, createdBy: 0, attachment: ''};
+      this.diary = { title: '', start_date: new Date(), end_date: new Date(), status: true, creator: '', attachment: ''};
       this.isNew = true;
     })
   }

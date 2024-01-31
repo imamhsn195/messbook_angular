@@ -4,7 +4,7 @@
     <form (submit)="submit(form)" #form="ngForm">
       <mat-form-field style="width: 100%;">
         <mat-label>Diaries</mat-label>
-        <mat-select [(ngModel)]="messBookMember.messBook" name="messBook">
+        <mat-select [(ngModel)]="messBookMember.diary" name="messBook">
           <mat-option *ngFor="let messBook of messbooksList" [value]="messBook">
             {{ messBook.title }}
           </mat-option>
@@ -33,7 +33,7 @@
       <button mat-flat-button color="accent" style="width: 100%;" type="submit">Add Member</button>
 
       <!-- Display form values for debugging purposes -->
-      <p>Diary:{{ messBookMember.messBook.title| json }}</p>
+      <p>Diary:{{ messBookMember.diary.title| json }}</p>
       <p>Member: {{ messBookMember.members[0].username| json }}</p>
       <p>InvitedBy: {{ messBookMember.invitedBy.username| json }}</p>
       <p>IsApproved: {{ messBookMember.isAccepted| json }}</p>

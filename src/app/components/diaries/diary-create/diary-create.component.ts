@@ -26,7 +26,7 @@ export class DiaryCreateComponent {
   tableColumnHeaders: string[] = ["id", "title", 'startDate', 'endDate', 'status', 'attachment', 'actions' ]
   messbooks: Diary[] = [];
   diary: Diary = {
-    title: '', status: true, createdBy: 0, attachment: '',startDate: new Date('2024-04-22'), endDate: new Date('2024-05-23')
+    title: '', status: true, creator: '65b8da08bad491200c1dcd65' , attachment: '',start_date: new Date('2024-04-22'), end_date: new Date('2024-05-23')
   };
 
   ngOnInit(): void{
@@ -35,9 +35,9 @@ export class DiaryCreateComponent {
 
   submit(form: NgForm) : void {
     if(!form.invalid){
-      // const maxId = this.messbooks.reduce((max, t) => (t.id > max ? t.id : max), 0);
-      // this.diary.id = maxId + 1;
       this.messBookService.addMessBook(this.diary).subscribe(() => {
+        console.log(this.diary);
+        
         this.router.navigate(['/diaries'])
         this.showSnacBar('Diary added successfully!', 'OK');
       });

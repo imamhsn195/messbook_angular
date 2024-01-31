@@ -1,9 +1,9 @@
 export interface Diary{
-    id?: string,
+    _id?: string,
     title: string,
-    startDate?: Date,
-    endDate?: Date,
-    createdBy: number,
+    start_date?: Date,
+    end_date?: Date,
+    creator: String,
     attachment?: string,
-    status: boolean
+    status?: boolean
 }

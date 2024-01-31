@@ -112,7 +112,7 @@ const routes : Routes = [
         MatDividerModule,
         MatSelectModule,
         // In-memory Web API for demo purposes
-        HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService),
+        // HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService),
     ]
 })
 export class AppModule { }

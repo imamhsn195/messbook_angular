@@ -21,31 +21,29 @@ export class DiaryUpdateComponent {
     private router: Router
     ){}
     ngOnInit(): void {
-      this.getRecordById(Number(this.route.snapshot.paramMap.get('id')))
+      this.getRecordById(this.route.snapshot.paramMap.get('id')!)
     }
     tableColumnHeaders: string[] = ["id", "title", 'startDate', 'endDate', 'status', 'attachment', 'actions' ]
-    messbooks: Diary[] = [];
-    diary: Diary = { title: '', startDate: new Date(), endDate: new Date(), status: true, createdBy: 0, attachment: ''};
+    diaries: Diary[] = [];
+    diary: Diary = { title: '', start_date: new Date(), end_date: new Date(), status: true, creator: '', attachment: ''};
 
   submit(form: NgForm) : void {
     if(!form.invalid){
-      // const maxId = this.messbooks.reduce((max, t) => (t.id > max ? t.id : max), 0);
-      // this.diary.id = maxId + 1;
-      this.messBookService.addMessBook(this.diary).subscribe(() => {
+      this.messBookService.UpdateMessBook(this.diary).subscribe(() => {
         this.router.navigate(['/diaries'])
         this.showSnacBar('Diary added successfully!', 'OK');
       });
     }
   }
 
-  getRecordById(id: number): void {
+  getRecordById(id: String): void {
     this.messBookService.getMessBookById(id).subscribe((diary) => {
       this.diary = diary;
     });
   }
 
   getMessBooks(): void{
-    this.messBookService.getMessBooks().subscribe((messbooks) => { this.messbooks = messbooks });
+    this.messBookService.getMessBooks().subscribe((diaries) => { this.diaries = diaries });
   }
   private showSnacBar(message: string, action: string, panelClass?: any): void {
     this._snackBar.open(message , action, { horizontalPosition: 'center', verticalPosition: 'top', panelClass:panelClass});

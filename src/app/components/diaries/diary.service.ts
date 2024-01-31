@@ -8,25 +8,26 @@ import { Diary } from './diary.model';
   })
 export class DiaryService{
   constructor(private http: HttpClient) {}
-  private apiUrl = 'api';
+  private apiUrl = 'http://localhost:3000/api';
+  // api/diaries/create
 
-  addMessBook(messBook: Diary): Observable<Diary> {
-    return this.http.post<Diary>(`${this.apiUrl}/mess-books`, messBook);
+  addMessBook(diary: Diary): Observable<Diary> {
+    return this.http.post<Diary>(`${this.apiUrl}/diaries/create`, diary);
   }
 
-  getMessBookById(id: number): Observable<Diary>{
-    return this.http.get<Diary>(`${this.apiUrl}/mess-books/${id}`);
+  getMessBookById(id: String): Observable<Diary>{
+    return this.http.get<Diary>(`${this.apiUrl}/diaries/${id}`);
   };
   
   getMessBooks(): Observable<Diary[]>{
-    return this.http.get<Diary[]>(`${this.apiUrl}/mess-books`);
+    return this.http.get<Diary[]>(`${this.apiUrl}/diaries`);
   }
 
-  UpdateMessBook(messBook: Diary): Observable<Diary>{
-    return this.http.put<Diary>(`${this.apiUrl}/mess-books`, messBook);
+  UpdateMessBook(diary: Diary): Observable<Diary>{
+    return this.http.put<Diary>(`${this.apiUrl}/diaries/${diary._id}`, diary);
   }
 
   deleteMessBook(id: number): Observable<void>{
-    return this.http.delete<void>(`${this.apiUrl}/mess-books/${id}`);
+    return this.http.delete<void>(`${this.apiUrl}/diaries/${id}`);
   }
 }
