@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Diary } from './diary.model';
@@ -8,8 +9,7 @@ import { Diary } from './diary.model';
   })
 export class DiaryService{
   constructor(private http: HttpClient) {}
-  private apiUrl = 'http://localhost:3000/api';
-  // api/diaries/create
+  private apiUrl = environment.apiUrl; 
 
   addMessBook(diary: Diary): Observable<Diary> {
     return this.http.post<Diary>(`${this.apiUrl}/diaries/create`, diary);
