@@ -5,6 +5,7 @@ import { FileUploadService } from '../../../services/file-upload.service';
 import { DiaryService } from '../diary.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { SnackbarService } from '../../../services/snackbar.service';
 
 @Component({
   selector: 'app-diary-update',
@@ -15,7 +16,7 @@ export class DiaryUpdateComponent {
 
   constructor(
     private messBookService: DiaryService,
-    private _snackBar: MatSnackBar,
+    private snackbarService: SnackbarService,
     private fileUploadService: FileUploadService,
     private route: ActivatedRoute,
     private router: Router
@@ -31,7 +32,7 @@ export class DiaryUpdateComponent {
     if(!form.invalid){
       this.messBookService.UpdateMessBook(this.diary).subscribe(() => {
         this.router.navigate(['/diaries'])
-        this.showSnacBar('Diary added successfully!', 'OK');
+        this.snackbarService.showSnackbar('Diary added successfully!');
       });
     }
   }
@@ -44,9 +45,6 @@ export class DiaryUpdateComponent {
 
   getMessBooks(): void{
     this.messBookService.getMessBooks().subscribe((diaries) => { this.diaries = diaries });
-  }
-  private showSnacBar(message: string, action: string, panelClass?: any): void {
-    this._snackBar.open(message , action, { horizontalPosition: 'center', verticalPosition: 'top', panelClass:panelClass});
   }
 
   onFileChange(event: any): void {

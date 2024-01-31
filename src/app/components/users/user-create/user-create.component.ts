@@ -5,6 +5,7 @@ import { FileUploadService } from '../../../services/file-upload.service';
 import { UserService } from '../users.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { SnackbarService } from '../../../services/snackbar.service';
 
 @Component({
   selector: 'app-user-create',
@@ -14,7 +15,7 @@ import { NgForm } from '@angular/forms';
 export class UserCreateComponent {
   constructor(
     private userService: UserService, 
-    private _snackBar: MatSnackBar,
+    private snackbarService: SnackbarService,
     private fileUploadService: FileUploadService,
     private router: Router
     ) {}
@@ -27,11 +28,9 @@ export class UserCreateComponent {
   user: User = { username: '', email: '', phone: '', password: '', profile_picture: '' };
   addUser(form: NgForm) : void {    
     if(!form.invalid){
-        // const maxId = this.users.reduce((max, t) => (t.id > max ? t.id : max), 0);
-        // this.user.id = maxId + 1;
         this.userService.addUser(this.user).subscribe(() => {
           this.router.navigate(['/users']); 
-          this.showSnacBar('User added successfully!', 'OK');
+          this.snackbarService.showSnackbar('User added successfully!');
         });
       }    
     }
@@ -40,10 +39,6 @@ export class UserCreateComponent {
       this.users = users });
   }
 
-  private showSnacBar(message: string, action: string, panelClass?: any): void {
-    this._snackBar.open(message , action, { horizontalPosition: 'center', verticalPosition: 'top', panelClass:panelClass});
-  }
-  
   onFileChange(event: any): void {
     const selectedFile = this.fileUploadService.handleFileInput(event);
     if (selectedFile) {

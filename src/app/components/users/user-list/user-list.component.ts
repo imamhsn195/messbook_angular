@@ -3,6 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { User } from '../users.model';
 import { FileUploadService } from '../../../services/file-upload.service';
 import { UserService } from '../users.service';
+import { SnackbarService } from '../../../services/snackbar.service';
 
 @Component({
   selector: 'app-user-list',
@@ -15,7 +16,7 @@ export class UserListComponent {
 
   constructor(
     private userService: UserService, 
-    private _snackBar: MatSnackBar,
+    private snackbarService: SnackbarService,
     private fileUploadService: FileUploadService
     ) {}
 
@@ -30,12 +31,8 @@ export class UserListComponent {
 
   deleteUser(_id: String): void{
     this.userService.deleteUser(_id).subscribe(() => {
-      this.showSnacBar('User deleted successfully!', "OK")
+      this.snackbarService.showSnackbar('User deleted successfully!');
       this.getUsers();
     })
-  }
-
-  private showSnacBar(message: string, action: string, panelClass?: any): void {
-    this._snackBar.open(message , action, { horizontalPosition: 'center', verticalPosition: 'top', panelClass:panelClass});
   }
 }

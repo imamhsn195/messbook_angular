@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { User } from '../users.model';
 import { UserService } from '../users.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { FileUploadService } from '../../../services/file-upload.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { SnackbarService } from '../../../services/snackbar.service';
 
 @Component({
   selector: 'app-user-update',
@@ -14,7 +14,7 @@ import { NgForm } from '@angular/forms';
 export class UserUpdateComponent {
     constructor(
     private userService: UserService,
-    private _snackBar: MatSnackBar,
+    private snackbarService: SnackbarService,
     private fileUploadService: FileUploadService,
     private route: ActivatedRoute,
     private router: Router
@@ -27,12 +27,9 @@ export class UserUpdateComponent {
     if(!form.invalid){
       this.userService.UpdateUser(this.user).subscribe(() => {
         this.router.navigate(['/users'])
-        this.showSnacBar('User updated succesfully!', 'OK');
+        this.snackbarService.showSnackbar('User updated succesfully!');
       });
     }
-  }
-  private showSnacBar(message: string, action: string, panelClass?: any): void {
-    this._snackBar.open(message, action, { horizontalPosition: 'center', verticalPosition: 'top', panelClass: panelClass });
   }
 
   onFileChange(event: any): void {

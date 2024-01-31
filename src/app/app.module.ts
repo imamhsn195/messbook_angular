@@ -38,6 +38,7 @@ import { DiaryListComponent } from './components/diaries/diary-list/diary-list.c
 import { MessMembersCreateComponent } from './components/mess-members/mess-members-create/mess-members-create.component';
 import { MessMembersUpdateComponent } from './components/mess-members/mess-members-update/mess-members-update.component';
 import { MessMembersListComponent } from './components/mess-members/mess-members-list/mess-members-list.component';
+import { SnackbarComponent } from './components/snackbar/snackbar.component';
 
 const routes : Routes = [
   { path: '', redirectTo: 'api/dashboard', pathMatch: 'full'},
@@ -85,6 +86,7 @@ const routes : Routes = [
         MessMembersListComponent,
         MessMembersCreateComponent,
         MessMembersUpdateComponent,
+        SnackbarComponent,
     ],
     exports: [RouterModule],
     providers: [],

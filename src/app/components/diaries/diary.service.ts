@@ -27,7 +27,7 @@ export class DiaryService{
     return this.http.put<Diary>(`${this.apiUrl}/diaries/${diary._id}`, diary);
   }
 
-  deleteMessBook(id: number): Observable<void>{
+  deleteMessBook(id: String): Observable<void>{
     return this.http.delete<void>(`${this.apiUrl}/diaries/${id}`);
   }
 }
