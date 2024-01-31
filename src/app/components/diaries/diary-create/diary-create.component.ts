@@ -24,7 +24,7 @@ export class DiaryCreateComponent {
   tableColumnHeaders: string[] = ["id", "title", 'startDate', 'endDate', 'status', 'attachment', 'actions' ]
   messbooks: Diary[] = [];
   diary: Diary = {
-    title: '', status: true, creator: '65b8dbb9bad491200c1dcd81' , attachment: '',start_date: new Date('2024-04-22'), end_date: new Date('2024-05-23')
+    title: '', status: true, creator: '65ba10cb5138f0d5cc0d3fd4' , attachment: '',start_date: new Date('2024-04-22'), end_date: new Date('2024-05-23')
   };
 
   ngOnInit(): void{

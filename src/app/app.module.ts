@@ -39,6 +39,8 @@ import { MessMembersCreateComponent } from './components/mess-members/mess-membe
 import { MessMembersUpdateComponent } from './components/mess-members/mess-members-update/mess-members-update.component';
 import { MessMembersListComponent } from './components/mess-members/mess-members-list/mess-members-list.component';
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
+import { DeleteConfirmationComponent } from './components/delete-confirmation/delete-confirmation.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const routes : Routes = [
   { path: '', redirectTo: 'api/dashboard', pathMatch: 'full'},
@@ -86,7 +88,10 @@ const routes : Routes = [
         MessMembersListComponent,
         MessMembersCreateComponent,
         MessMembersUpdateComponent,
+
+        // common components
         SnackbarComponent,
+        DeleteConfirmationComponent,
     ],
     exports: [RouterModule],
     providers: [],
@@ -99,6 +104,7 @@ const routes : Routes = [
         RouterModule,
         ReactiveFormsModule,
         RouterModule.forRoot(routes),
+
         // Angular Material Modules
         MatCheckboxModule,
         MatTableModule,
@@ -113,6 +119,8 @@ const routes : Routes = [
         MatIconModule,
         MatDividerModule,
         MatSelectModule,
+        MatDialogModule,
+        
         // In-memory Web API for demo purposes
         // HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService),
     ]

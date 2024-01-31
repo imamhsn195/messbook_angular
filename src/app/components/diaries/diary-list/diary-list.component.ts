@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { DiaryService } from '../diary.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Diary } from '../diary.model';
 import { FileUploadService } from '../../../services/file-upload.service';
 import { SnackbarService } from '../../../services/snackbar.service';
+import { DeleteConfirmationService } from '../../../services/delete-confirmation.service';
 
 @Component({
   selector: 'app-diary-list',
@@ -15,6 +15,7 @@ export class DiaryListComponent {
   constructor(
     private messBookService: DiaryService,
     private snackbarService: SnackbarService,
+    private deleteConfirmationService: DeleteConfirmationService,
     private fileUploadService: FileUploadService
     ){}
 
@@ -37,11 +38,15 @@ export class DiaryListComponent {
   }
 
   deleteMessBook(id: String): void{
-    this.messBookService.deleteMessBook(id).subscribe(() => {
-      this.snackbarService.showSnackbar('Diary deleted successfully!');
-      this.getMessBooks();
-      this.diary = { title: '', start_date: new Date(), end_date: new Date(), status: true, creator: '', attachment: ''};
-    })
+    this.deleteConfirmationService.openConfirmationDialog().subscribe((confirmed) => {
+      if (confirmed) {
+          this.messBookService.deleteMessBook(id).subscribe(() => {
+            this.snackbarService.showSnackbar('Diary deleted successfully!');
+            this.getMessBooks();
+            this.diary = { title: '', start_date: new Date(), end_date: new Date(), status: true, creator: '', attachment: ''};
+          })
+      }
+    });
   }
 
   onFileChange(event: any): void {

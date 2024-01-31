@@ -4,6 +4,7 @@ import { User } from '../users.model';
 import { FileUploadService } from '../../../services/file-upload.service';
 import { UserService } from '../users.service';
 import { SnackbarService } from '../../../services/snackbar.service';
+import { DeleteConfirmationService } from '../../../services/delete-confirmation.service';
 
 @Component({
   selector: 'app-user-list',
@@ -17,7 +18,8 @@ export class UserListComponent {
   constructor(
     private userService: UserService, 
     private snackbarService: SnackbarService,
-    private fileUploadService: FileUploadService
+    private fileUploadService: FileUploadService,
+    private deleteConfirmationService: DeleteConfirmationService
     ) {}
 
   ngOnInit(): void{
@@ -30,9 +32,13 @@ export class UserListComponent {
   }
 
   deleteUser(_id: String): void{
-    this.userService.deleteUser(_id).subscribe(() => {
-      this.snackbarService.showSnackbar('User deleted successfully!');
-      this.getUsers();
-    })
+    this.deleteConfirmationService.openConfirmationDialog().subscribe((confirmed) => {
+      if (confirmed) {
+        this.userService.deleteUser(_id).subscribe(() => {
+          this.snackbarService.showSnackbar('User deleted successfully!');
+          this.getUsers();
+        })
+      }
+    });
   }
 }
