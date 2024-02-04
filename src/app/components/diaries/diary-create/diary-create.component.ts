@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { DiaryService } from '../diary.service';
-import { FileUploadService } from '../../../services/file-upload.service';
 import { Diary } from '../diary.model';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
@@ -17,7 +16,6 @@ export class DiaryCreateComponent {
   constructor(
     private messBookService: DiaryService,
     private snackbarService: SnackbarService,
-    private fileUploadService: FileUploadService,
     private router: Router
     ){}
 
@@ -44,12 +42,5 @@ export class DiaryCreateComponent {
 
   getMessBooks(): void{
     this.messBookService.getMessBooks().subscribe((messbooks) => { this.messbooks = messbooks });
-  }
-
-  onFileChange(event: any): void {
-    const selectedFile = this.fileUploadService.handleFileInput(event);
-    if (selectedFile) {
-      this.diary.attachment = this.fileUploadService.extractFileName(selectedFile);
-    }
   }
 }

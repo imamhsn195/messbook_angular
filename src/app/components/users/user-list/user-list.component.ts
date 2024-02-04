@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { User } from '../users.model';
-import { FileUploadService } from '../../../services/file-upload.service';
 import { UserService } from '../users.service';
 import { SnackbarService } from '../../../services/snackbar.service';
 import { DeleteConfirmationService } from '../../../services/delete-confirmation.service';
@@ -18,7 +17,6 @@ export class UserListComponent {
   constructor(
     private userService: UserService, 
     private snackbarService: SnackbarService,
-    private fileUploadService: FileUploadService,
     private deleteConfirmationService: DeleteConfirmationService
     ) {}
 

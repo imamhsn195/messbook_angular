@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Transaction } from '../transactions.model';
-import { FileUploadService } from '../../../services/file-upload.service';
 import { TransactionService } from '../transactions-service';
+import { SnackbarService } from '../../../services/snackbar.service';
 
 @Component({
   selector: 'app-transactoins-list',
@@ -17,8 +17,7 @@ export class TransactoinsListComponent {
 
   constructor(
       private transactionService: TransactionService, 
-      private _snackBar: MatSnackBar, 
-      private fileUploadService: FileUploadService
+      private snackbarService: SnackbarService
     ) {}
 
   ngOnInit(): void{
@@ -32,19 +31,7 @@ export class TransactoinsListComponent {
   deleteTransaction(id: number):void{
     this.transactionService.deleteTransaction(id).subscribe(() => {
       this.getTransactions();
-      this.showSnacBar('Transaction deleted successfully!', 'Ok', ['blue-snackbar']);
+      this.snackbarService.showSnackbar('Transaction deleted successfully!');
     });
 }
-
-  private showSnacBar(message: string, action: string, panelClass?: any): void{
-    this._snackBar.open(message , action, { horizontalPosition: 'center', verticalPosition: 'top', panelClass:panelClass});
-  }
-
-  onFileChange(event: any): void {
-    const selectedFile = this.fileUploadService.handleFileInput(event);
-    if (selectedFile) {
-      this.newTransaction.attachment = this.fileUploadService.extractFileName(selectedFile);
-    }
-  }
-
 }

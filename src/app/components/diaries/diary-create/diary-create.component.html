@@ -23,7 +23,7 @@
             </mat-form-field>
                 <button type="button" color="primary" style="width: 100%; margin-bottom: 0.5em;" mat-flat-button (click)="fileInput.click()">Attachment (Optional):</button>
                 <!-- <input hidden  #fileInput type="file"  id="attachment" [(ngModel)]="diary.attachment" name="attachment"> -->
-                <input hidden #fileInput type="file" id="attachment" (change)="onFileChange($event)" name="attachment">
+                <input hidden #fileInput type="file" id="attachment" name="attachment">
 
                 <button mat-flat-button color="accent" style="width: 100%;" type="submit">Add Transaction</button>
         </form>

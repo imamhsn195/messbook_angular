@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { User } from '../users.model';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { FileUploadService } from '../../../services/file-upload.service';
 import { UserService } from '../users.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
@@ -16,7 +14,6 @@ export class UserCreateComponent {
   constructor(
     private userService: UserService, 
     private snackbarService: SnackbarService,
-    private fileUploadService: FileUploadService,
     private router: Router
     ) {}
       
@@ -25,10 +22,20 @@ export class UserCreateComponent {
   }
  
   users: User[] = [];
-  user: User = { username: '', email: '', phone: '', password: '', profile_picture: '' };
+  user: User = { username: '', email: '', phone: '', password: '' };
+
   addUser(form: NgForm) : void {    
     if(!form.invalid){
-        this.userService.addUser(this.user).subscribe(() => {
+      const formData = new FormData();
+      formData.append('email', this.user.email);
+      formData.append('password', this.user.password);
+      formData.append('phone', this.user.phone);
+      if (this.user.profile_picture) {
+        formData.append('profile_picture', this.user.profile_picture);
+      }
+      formData.append('username', this.user.username);
+
+        this.userService.addUser(formData).subscribe(() => {
           this.router.navigate(['/users']); 
           this.snackbarService.showSnackbar('User added successfully!');
         });
@@ -37,12 +44,5 @@ export class UserCreateComponent {
   getUsers(): void{
     this.userService.getUsers().subscribe((users) => {
       this.users = users });
-  }
-
-  onFileChange(event: any): void {
-    const selectedFile = this.fileUploadService.handleFileInput(event);
-    if (selectedFile) {
-      this.user.profile_picture = this.fileUploadService.extractFileName(selectedFile);
-    }
   }
 }

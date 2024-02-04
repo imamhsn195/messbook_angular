@@ -4,11 +4,11 @@ import { UserService } from '../../users/users.service';
 import { User } from '../../users/users.model';
 import { DiaryService } from '../../diaries/diary.service';
 import { Diary } from '../../diaries/diary.model';
-import { FileUploadService } from '../../../services/file-upload.service';
 import { MessMember } from '../mess-member';
 import { MessMemberService } from '../mess-member.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { SnackbarService } from '../../../services/snackbar.service';
 
 @Component({
   selector: 'app-mess-members-create',
@@ -18,12 +18,12 @@ import { Router } from '@angular/router';
 
 export class MessMembersCreateComponent implements OnInit {
   constructor(
-    private userService: UserService, 
-    private router: Router,
-    private _snackBar: MatSnackBar,
-    private messBookService: DiaryService,
-    private messBookMemberService: MessMemberService,
-    private fileUploadService: FileUploadService    ){}
+      private userService: UserService, 
+      private router: Router,
+      private snackbarService: SnackbarService,
+      private messBookService: DiaryService,
+      private messBookMemberService: MessMemberService 
+    ){}
 
     messbooksList: Diary[] = [];
     userList: User[] = [];
@@ -31,8 +31,8 @@ export class MessMembersCreateComponent implements OnInit {
     messBookMember: MessMember = { 
       id: 1, 
       diary: { _id: "gjk", title: 'Mess 1', start_date: new Date('2024-04-22'), end_date: new Date('2024-05-23'), attachment: 'attachment3.jpg', status: true, creator: ''}, 
-      members:[{ _id: "kgug", username: "imam", email: 'imam@gmail.com', phone: '123456789', password: '123', profile_picture: 'attachment3.jpg' }], 
-      invitedBy:  { _id: "jyfiu", username: "imam", email: 'imam@gmail.com', phone: '123456789', password: '123', profile_picture: 'attachment3.jpg' }, 
+      members:[{ _id: "kgug", username: "imam", email: 'imam@gmail.com', phone: '123456789', password: '123' }], 
+      invitedBy:  { _id: "jyfiu", username: "imam", email: 'imam@gmail.com', phone: '123456789', password: '123' }, 
       isAccepted: true 
     }
 
@@ -46,8 +46,8 @@ export class MessMembersCreateComponent implements OnInit {
       const maxId = this.messBookMembers.reduce((max, t) => (t.id > max ? t.id : max), 0);
       this.messBookMember.id = maxId + 1;    
       this.messBookMemberService.addMember(this.messBookMember).subscribe((messMember) => {
-        this.router.navigate(['/diaries'])
-        this.showSnacBar('Mess member added successfully!', 'OK');
+        this.router.navigate(['/diaries']);
+        this.snackbarService.showSnackbar('Mess member added successfully!');
         console.log(messMember);
       });
     }else{
@@ -68,16 +68,4 @@ export class MessMembersCreateComponent implements OnInit {
   getMessBooks(): void{
     this.messBookService.getMessBooks().subscribe((messbooks) => { this.messbooksList = messbooks });
   }
-  
-  onFileChange(event: any): void {
-    const selectedFile = this.fileUploadService.handleFileInput(event);
-    if (selectedFile) {
-      // this.user.profile_picture = this.fileUploadService.extractFileName(selectedFile);
-    }
-  }
-  private showSnacBar(message: string, action: string, panelClass?: any): void {
-    this._snackBar.open(message , action, { horizontalPosition: 'center', verticalPosition: 'top', panelClass:panelClass});
-  }
-
-
 }

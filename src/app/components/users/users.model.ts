@@ -1,8 +1,8 @@
-export interface User{
+export interface User {
     _id?: string,
     username : string,
     email: string,
     phone: string,
     password: string,
-    profile_picture?: string
+    profile_picture?: File | null
 }

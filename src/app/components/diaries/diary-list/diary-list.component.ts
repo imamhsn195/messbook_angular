@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { DiaryService } from '../diary.service';
 import { Diary } from '../diary.model';
-import { FileUploadService } from '../../../services/file-upload.service';
 import { SnackbarService } from '../../../services/snackbar.service';
 import { DeleteConfirmationService } from '../../../services/delete-confirmation.service';
 
@@ -15,8 +14,7 @@ export class DiaryListComponent {
   constructor(
     private messBookService: DiaryService,
     private snackbarService: SnackbarService,
-    private deleteConfirmationService: DeleteConfirmationService,
-    private fileUploadService: FileUploadService
+    private deleteConfirmationService: DeleteConfirmationService
     ){}
 
   tableColumnHeaders: string[] = [ "serialNumber" , "id", "title", 'startDate', 'endDate', 'createdBy', 'status', 'attachment', 'actions' ]
@@ -47,12 +45,5 @@ export class DiaryListComponent {
           })
       }
     });
-  }
-
-  onFileChange(event: any): void {
-    const selectedFile = this.fileUploadService.handleFileInput(event);
-    if (selectedFile) {
-      this.diary.attachment = this.fileUploadService.extractFileName(selectedFile);
-    }
   }
 }

@@ -5,5 +5,6 @@ export interface MessMember {
  diary: Diary;
  members: User[];
  invitedBy: User;
- isAccepted: boolean
+ isAccepted: boolean;
+ attachment?: File | null
 }

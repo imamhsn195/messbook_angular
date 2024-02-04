@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { Transaction } from '../transactions.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { FileUploadService } from '../../../services/file-upload.service';
 import { TransactionService } from '../transactions-service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { SnackbarService } from '../../../services/snackbar.service';
 
 @Component({
   selector: 'app-transactions-update',
@@ -14,8 +14,7 @@ import { NgForm } from '@angular/forms';
 export class TransactionsUpdateComponent {
   constructor(
     private transactionService: TransactionService, 
-    private _snackBar: MatSnackBar, 
-    private fileUploadService: FileUploadService,
+    private snackbarService: SnackbarService, 
     private route: ActivatedRoute,
     private router: Router
   ) {}
@@ -29,8 +28,8 @@ export class TransactionsUpdateComponent {
   submit(form: NgForm): void{
     if(!form.invalid){
       this.transactionService.updateTransaction(this.transaction).subscribe((transaction) => {
-        this.router.navigate(['api/transactions/list'])
-        this.showSnacBar('Transaction updated successfully!','OK');
+        this.router.navigate(['api/transactions/list']);
+        this.snackbarService.showSnackbar('Transaction updated successfully!');
       })
     }
     }
@@ -42,16 +41,5 @@ export class TransactionsUpdateComponent {
   }
   getTransactions(): void {
     this.transactionService.getTransactions().subscribe(transactions => this.transactions = transactions);
-  }
-  
-  private showSnacBar(message: string, action: string, panelClass?: any): void{
-    this._snackBar.open(message , action, { horizontalPosition: 'center', verticalPosition: 'top', panelClass:panelClass});
-  }
-
-  onFileChange(event: any): void {
-    const selectedFile = this.fileUploadService.handleFileInput(event);
-    if (selectedFile) {
-      this.transaction.attachment = this.fileUploadService.extractFileName(selectedFile);
-    }
   }
 }

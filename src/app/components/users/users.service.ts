@@ -11,7 +11,7 @@ export class UserService{
   constructor(private http: HttpClient) {}
   private apiUrl = environment.apiUrl;  
 
-  addUser(user: User): Observable<User> {
+  addUser(user: FormData ): Observable<User> {
     return this.http.post<User>(`${this.apiUrl}/users/create`, user);
   }
 
