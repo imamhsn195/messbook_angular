@@ -45,4 +45,8 @@ export class UserCreateComponent {
     this.userService.getUsers().subscribe((users) => {
       this.users = users });
   }
+  onFileChange(event: any){
+    this.user.profile_picture =event.target.files[0];
+    // console.log(this.user)
+  }
 }

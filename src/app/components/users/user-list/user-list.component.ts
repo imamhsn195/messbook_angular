@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { User } from '../users.model';
 import { UserService } from '../users.service';
 import { SnackbarService } from '../../../services/snackbar.service';
 import { DeleteConfirmationService } from '../../../services/delete-confirmation.service';
+import { environment } from '../../../../environments/environment';
+import { NgOptimizedImage } from '@angular/common'
 
 @Component({
   selector: 'app-user-list',
@@ -13,11 +14,11 @@ import { DeleteConfirmationService } from '../../../services/delete-confirmation
 export class UserListComponent {
   tableColumnHeaders: string[] = ["serialNumber", "id", "username", 'email', 'phone', 'profile_picture', 'actions' ]
   users: User[] = [];
-
+  publicUrl = environment.publicUrl;
   constructor(
     private userService: UserService, 
     private snackbarService: SnackbarService,
-    private deleteConfirmationService: DeleteConfirmationService
+    private deleteConfirmationService: DeleteConfirmationService,
     ) {}
 
   ngOnInit(): void{
