@@ -23,10 +23,11 @@ export class UserService{
     return this.http.get<User[]>(`${this.apiUrl}/users`);
   }
 
-  UpdateUser(user: User): Observable<User>{
-   console.dir(user)
-    
-    return this.http.put<User>(`${this.apiUrl}/users/${user._id}`, user);
+  UpdateUser(user: FormData): Observable<User>{
+    const userId = user.get('_id');
+    user.delete('_id');
+    console.log("userUpdated" + user);
+    return this.http.put<User>(`${this.apiUrl}/users/${userId}`, user);
   }
 
   deleteUser(_id: String): Observable<void>{

@@ -27,14 +27,13 @@ export class UserCreateComponent {
   addUser(form: NgForm) : void {    
     if(!form.invalid){
       const formData = new FormData();
+      formData.append('username', this.user.username);
       formData.append('email', this.user.email);
       formData.append('password', this.user.password);
       formData.append('phone', this.user.phone);
       if (this.user.profile_picture) {
         formData.append('profile_picture', this.user.profile_picture);
       }
-      formData.append('username', this.user.username);
-
         this.userService.addUser(formData).subscribe(() => {
           this.router.navigate(['/users']); 
           this.snackbarService.showSnackbar('User added successfully!');

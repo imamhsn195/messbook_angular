@@ -23,7 +23,16 @@ export class UserUpdateComponent {
   user: User = { _id: '', username: '', email: '', phone: '', password: ''};
   submit(form: NgForm): void {
     if(!form.invalid){
-      this.userService.UpdateUser(this.user).subscribe(() => {
+      const formData = new FormData();
+      formData.append('username', this.user.username);
+      formData.append('email', this.user.email);
+      formData.append('phone', this.user.phone );
+      formData.append('password', this.user.password);
+      formData.append('_id', this.user._id!);
+      if (this.user.profile_picture) {
+        formData.append('profile_picture', this.user.profile_picture )
+      }
+      this.userService.UpdateUser(formData).subscribe(() => {
         this.router.navigate(['/users'])
         this.snackbarService.showSnackbar('User updated succesfully!');
       });
@@ -32,6 +41,11 @@ export class UserUpdateComponent {
   getUserById( _id:String ): void {
     this.userService.getUserById(_id).subscribe((user) => {
       this.user = user;
+      console.log(user._id)
     });
+  }
+  onFileChange(event: any){
+    this.user.profile_picture = event.target.files[0];
+    console.info("user:" + this.user.profile_picture)
   }
 }
