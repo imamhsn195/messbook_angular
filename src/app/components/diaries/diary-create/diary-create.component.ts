@@ -4,6 +4,7 @@ import { Diary } from '../diary.model';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { SnackbarService } from '../../../services/snackbar.service';
+import { UserService } from '../../users/users.service';
 
 
 @Component({
@@ -16,17 +17,21 @@ export class DiaryCreateComponent {
   constructor(
     private messBookService: DiaryService,
     private snackbarService: SnackbarService,
+    private userService: UserService,
     private router: Router
     ){}
 
   tableColumnHeaders: string[] = ["id", "title", 'startDate', 'endDate', 'status', 'attachment', 'actions' ]
   messbooks: Diary[] = [];
   diary: Diary = {
-    title: '', status: true, creator: '65ba228e41ee41cdecf5c938' , attachment: '',start_date: new Date('2024-04-22'), end_date: new Date('2024-05-23')
+    title: '', status: true, creator: '' , attachment: '',start_date: new Date('2024-04-22'), end_date: new Date('2024-05-23')
   };
 
   ngOnInit(): void{
     this.getMessBooks();
+    this.userService.getUsers().forEach((user) => {
+      this.diary.creator = user[0]._id!
+    })
   }
 
   submit(form: NgForm) : void {
