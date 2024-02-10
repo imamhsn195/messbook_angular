@@ -7,6 +7,16 @@
             </a>
         </h1>
     </mat-card-header>
+            
+    <mat-card-actions class="paginator-container">
+            <mat-paginator 
+            [length]="length"
+            [pageSize]="pageSize"
+            [pageSizeOptions]="pageSizeOptions"
+            (page)="paginationChange($event)"
+            aria-label="Select page">
+        </mat-paginator>
+    </mat-card-actions>
     <mat-card-content>
         <table mat-table [dataSource]="users" class="mat-elevation-z8">
             <ng-container matColumnDef="serialNumber">
@@ -45,5 +55,5 @@
             <tr mat-header-row *matHeaderRowDef="tableColumnHeaders"></tr>
             <tr mat-row *matRowDef="let row; columns: tableColumnHeaders;"></tr>
         </table>
-    </mat-card-content>
+</mat-card-content>
 </mat-card>

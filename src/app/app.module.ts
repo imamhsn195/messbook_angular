@@ -19,6 +19,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatPaginatorModule} from '@angular/material/paginator';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/common/header/header.component';
 import { DashboardComponent } from './components/common/dashboard/dashboard.component';
@@ -79,6 +80,7 @@ import { AppRoutingModule } from './app-routing.module';
     MatSelectModule,
     MatCheckboxModule,
     MatDialogModule,
+    MatPaginatorModule,
     // HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService)
   ],
   providers: [],

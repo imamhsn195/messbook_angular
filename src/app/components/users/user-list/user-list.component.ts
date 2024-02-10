@@ -5,6 +5,7 @@ import { SnackbarService } from '../../../services/snackbar.service';
 import { DeleteConfirmationService } from '../../../services/delete-confirmation.service';
 import { environment } from '../../../../environments/environment';
 import { NgOptimizedImage } from '@angular/common'
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-user-list',
@@ -12,6 +13,10 @@ import { NgOptimizedImage } from '@angular/common'
   styleUrl: './user-list.component.css'
 })
 export class UserListComponent {
+  length = 50;
+  pageSize = 10;
+  pageIndex = 0;
+  pageSizeOptions = [5, 10, 25];
   tableColumnHeaders: string[] = ["serialNumber", "id", "username", 'email', 'phone', 'profile_picture', 'actions' ]
   users: User[] = [];
   publicUrl = environment.publicUrl;
@@ -39,5 +44,11 @@ export class UserListComponent {
         })
       }
     });
+  }
+  paginationChange(event: PageEvent){
+    this.length = event.length;
+    this.pageSize = event.pageSize;
+    this.pageIndex = event.pageIndex;
+    console.log(this.length, this.pageSize, this.pageIndex);
   }
 }
