@@ -30,9 +30,11 @@ export class UserListComponent {
     this.getUsers(this.pageIndex, this.pageSize);
   }
  
-  getUsers(pageIndex: Number, pageSize: Number): void{
-    this.userService.getUsers(pageIndex, pageSize).subscribe((users) => {
-      this.users = users });
+  getUsers(pageIndex: number, pageSize: number): void{
+    this.userService.getUsers(pageIndex, pageSize).subscribe((response) => {
+      this.users = response.users
+      this.length = response.totalCount
+    });
   }
 
   deleteUser(_id: String): void{

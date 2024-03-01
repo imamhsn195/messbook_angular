@@ -29,8 +29,8 @@ export class DiaryCreateComponent {
 
   ngOnInit(): void{
     this.getMessBooks();
-    this.userService.getUsers(0,100).forEach((user) => {
-      this.diary.creator = user[0]._id!
+    this.userService.getUsers(0,100).forEach((response) => {
+      this.diary.creator = response.users[0]._id!
     })
   }
 

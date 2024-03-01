@@ -19,9 +19,9 @@ export class UserService{
     return this.http.get<User>(`${this.apiUrl}/users/${id}`);
   };
   
-  getUsers(page: Number | null, size: Number | null): Observable<User[]>{
+  getUsers(page: number | null, size: number | null): Observable<{users: User[], totalCount: number, totalPages: number, currentPage: number}>{
     const queryParams = `?page=${page}&size=${size}`;
-    return this.http.get<User[]>(`${this.apiUrl}/users${queryParams}`);
+    return this.http.get<{users: User[], totalCount: number, totalPages: number, currentPage: number}>(`${this.apiUrl}/users${queryParams}`);
   }
 
   UpdateUser(user: FormData): Observable<User>{
