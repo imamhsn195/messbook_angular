@@ -41,7 +41,7 @@ export class UserCreateComponent {
       }    
     }
   getUsers(): void{
-    this.userService.getUsers().subscribe((users) => {
+    this.userService.getUsers(null,null).subscribe((users) => {
       this.users = users });
   }
   onFileChange(event: any){

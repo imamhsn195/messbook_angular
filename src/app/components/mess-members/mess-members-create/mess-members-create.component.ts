@@ -60,7 +60,7 @@ export class MessMembersCreateComponent implements OnInit {
   }
 
   getUsers(): void{
-    this.userService.getUsers().subscribe((users) => {
+    this.userService.getUsers(0,100).subscribe((users) => {
       this.userList = users 
     });
   }

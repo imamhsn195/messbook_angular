@@ -14,9 +14,9 @@ import { PageEvent } from '@angular/material/paginator';
 })
 export class UserListComponent {
   length = 50;
-  pageSize = 10;
+  pageSize = 2;
   pageIndex = 0;
-  pageSizeOptions = [5, 10, 25];
+  pageSizeOptions = [2, 5, 10];
   tableColumnHeaders: string[] = ["serialNumber", "id", "username", 'email', 'phone', 'profile_picture', 'actions' ]
   users: User[] = [];
   publicUrl = environment.publicUrl;
@@ -27,11 +27,11 @@ export class UserListComponent {
     ) {}
 
   ngOnInit(): void{
-    this.getUsers();
+    this.getUsers(this.pageIndex, this.pageSize);
   }
  
-  getUsers(): void{
-    this.userService.getUsers().subscribe((users) => {
+  getUsers(pageIndex: Number, pageSize: Number): void{
+    this.userService.getUsers(pageIndex, pageSize).subscribe((users) => {
       this.users = users });
   }
 
@@ -40,7 +40,7 @@ export class UserListComponent {
       if (confirmed) {
         this.userService.deleteUser(_id).subscribe(() => {
           this.snackbarService.showSnackbar('User deleted successfully!');
-          this.getUsers();
+          this.getUsers(this.pageIndex, this.pageSize);
         })
       }
     });
@@ -49,6 +49,6 @@ export class UserListComponent {
     this.length = event.length;
     this.pageSize = event.pageSize;
     this.pageIndex = event.pageIndex;
-    console.log(this.length, this.pageSize, this.pageIndex);
+    this.getUsers(this.pageIndex, this.pageSize);
   }
 }

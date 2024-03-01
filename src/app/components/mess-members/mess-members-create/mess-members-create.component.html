@@ -4,32 +4,32 @@
     <form (submit)="submit(form)" #form="ngForm">
       <mat-form-field style="width: 100%;">
         <mat-label>Diaries</mat-label>
-        <mat-select [(ngModel)]="messBookMember.diary" name="messBook">
+        <!-- <mat-select [(ngModel)]="messBookMember.diary" name="messBook"> -->
           <mat-option *ngFor="let messBook of messbooksList" [value]="messBook">
             {{ messBook.title }}
           </mat-option>
-        </mat-select>
+        <!-- </mat-select> -->
       </mat-form-field>
       <mat-form-field style="width: 100%;">
         <mat-label>Member</mat-label>
-        <mat-select [(ngModel)]="messBookMember.members" name="messBookMember">
+        <!-- <mat-select [(ngModel)]="messBookMember.members" name="messBookMember"> -->
           <mat-option *ngFor="let member of userList" [value]="member">
             {{ member.username }}
           </mat-option>
-        </mat-select>
+        <!-- </mat-select> -->
       </mat-form-field>
       
       <mat-form-field style="width: 100%;">
         <mat-label>Invited By</mat-label>
-        <mat-select [(ngModel)]="messBookMember.invitedBy" #invitedBy="ngModel" name="invitedBy" required>
+        <!-- <mat-select [(ngModel)]="messBookMember.invitedBy" #invitedBy="ngModel" name="invitedBy" required> -->
           <mat-option *ngFor="let user of userList" [value]="user">
             {{ user.username }}
           </mat-option>
-        </mat-select>
+        <!-- </mat-select> -->
       </mat-form-field>
-      <mat-error *ngIf="invitedBy.invalid">Please select an Invited By user.</mat-error>
-      <mat-checkbox [(ngModel)]="messBookMember.isAccepted" name="isAccepted" #isAccepted="ngModel" labelPosition="after" required> Is Accepted </mat-checkbox>
-      <mat-error *ngIf="isAccepted.invalid">Please check is Accepted</mat-error>
+      <!-- <mat-error *ngIf="invitedBy.invalid">Please select an Invited By user.</mat-error> -->
+      <!-- <mat-checkbox [(ngModel)]="messBookMember.isAccepted" name="isAccepted" #isAccepted="ngModel" labelPosition="after" required> Is Accepted </mat-checkbox> -->
+      <!-- <mat-error *ngIf="isAccepted.invalid">Please check is Accepted</mat-error> -->
       <button mat-flat-button color="accent" style="width: 100%;" type="submit">Add Member</button>
 
       <!-- Display form values for debugging purposes -->
