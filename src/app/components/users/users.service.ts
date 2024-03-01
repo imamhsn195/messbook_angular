@@ -19,8 +19,8 @@ export class UserService{
     return this.http.get<User>(`${this.apiUrl}/users/${id}`);
   };
   
-  getUsers(page: number | null, size: number | null): Observable<{users: User[], totalCount: number, totalPages: number, currentPage: number}>{
-    const queryParams = `?page=${page}&size=${size}`;
+  getUsers(page: number, size: number, search: string): Observable<{users: User[], totalCount: number, totalPages: number, currentPage: number}>{
+    const queryParams = `?page=${page}&size=${size}&search=${search}`;
     return this.http.get<{users: User[], totalCount: number, totalPages: number, currentPage: number}>(`${this.apiUrl}/users${queryParams}`);
   }
 

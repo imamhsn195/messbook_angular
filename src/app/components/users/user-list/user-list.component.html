@@ -1,13 +1,20 @@
 <mat-card>
     <mat-card-header>
-        <h1>
-            All Users 
-            <a mat-menu-item routerLink="/users/create">
-                <mat-icon aria-hidden="false" aria-label="add" fontIcon="add"></mat-icon>
-            </a>
-        </h1>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+            <div>
+                <h1>All Users
+                    <a mat-menu-item routerLink="/users/create">
+                        <mat-icon aria-hidden="false" aria-label="add" fontIcon="add"></mat-icon>
+                    </a>
+                </h1>
+            </div>
+        </div>
     </mat-card-header>
+    
     <mat-card-content>
+        <mat-form-field style="width: 100%;">
+            <input matInput [(ngModel)]="search" placeholder="Search" (keyup)="searchUsers()" autofocus>
+        </mat-form-field>
         <table mat-table [dataSource]="users" class="mat-elevation-z8">
             <ng-container matColumnDef="serialNumber">
                 <th mat-header-cell *matHeaderCellDef> No. </th>

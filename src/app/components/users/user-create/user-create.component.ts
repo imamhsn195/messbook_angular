@@ -18,7 +18,6 @@ export class UserCreateComponent {
     ) {}
       
   ngOnInit(): void{
-    this.getUsers();
   }
  
   users: User[] = [];
@@ -40,10 +39,6 @@ export class UserCreateComponent {
         });
       }    
     }
-  getUsers(): void{
-    this.userService.getUsers(null,null).subscribe((response) => {
-      this.users = response.users });
-  }
   onFileChange(event: any){
     this.user.profile_picture =event.target.files[0];
     // console.log(this.user)

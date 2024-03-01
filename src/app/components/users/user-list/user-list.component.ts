@@ -6,6 +6,7 @@ import { DeleteConfirmationService } from '../../../services/delete-confirmation
 import { environment } from '../../../../environments/environment';
 import { NgOptimizedImage } from '@angular/common'
 import { PageEvent } from '@angular/material/paginator';
+import { delay } from 'rxjs';
 
 @Component({
   selector: 'app-user-list',
@@ -13,10 +14,11 @@ import { PageEvent } from '@angular/material/paginator';
   styleUrl: './user-list.component.css'
 })
 export class UserListComponent {
+  search = "";
   length = 50;
-  pageSize = 2;
+  pageSize = 5;
   pageIndex = 0;
-  pageSizeOptions = [2, 5, 10];
+  pageSizeOptions = [5, 15, 40];
   tableColumnHeaders: string[] = ["serialNumber", "id", "username", 'email', 'phone', 'profile_picture', 'actions' ]
   users: User[] = [];
   publicUrl = environment.publicUrl;
@@ -27,11 +29,11 @@ export class UserListComponent {
     ) {}
 
   ngOnInit(): void{
-    this.getUsers(this.pageIndex, this.pageSize);
+    this.getUsers(this.pageIndex, this.pageSize, this.search);
   }
  
-  getUsers(pageIndex: number, pageSize: number): void{
-    this.userService.getUsers(pageIndex, pageSize).subscribe((response) => {
+  getUsers(pageIndex: number, pageSize: number, search: string): void{
+    this.userService.getUsers(pageIndex, pageSize, search).subscribe((response) => {
       this.users = response.users
       this.length = response.totalCount
     });
@@ -42,7 +44,7 @@ export class UserListComponent {
       if (confirmed) {
         this.userService.deleteUser(_id).subscribe(() => {
           this.snackbarService.showSnackbar('User deleted successfully!');
-          this.getUsers(this.pageIndex, this.pageSize);
+          this.getUsers(this.pageIndex, this.pageSize, this.search);
         })
       }
     });
@@ -51,6 +53,11 @@ export class UserListComponent {
     this.length = event.length;
     this.pageSize = event.pageSize;
     this.pageIndex = event.pageIndex;
-    this.getUsers(this.pageIndex, this.pageSize);
+    this.getUsers(this.pageIndex, this.pageSize, this.search);
+  }
+
+  searchUsers(){
+    delay(5000)
+      this.getUsers(this.pageIndex, this.pageSize, this.search);
   }
 }
